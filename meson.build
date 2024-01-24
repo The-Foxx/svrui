@@ -13,11 +13,7 @@
 #///////////////////////////////////////////////////////////////////////////
 
 project('svrui', 'c')
-
-option('vrui_example_build', type : 'boolean', value : true)
-option('vrui_example_ovrpath', type : 'string', value : 'openvr')
-option('vrui_app_name', type : 'string', value : 'DRIVER_6')
-option('vrui_shared', type : 'boolean', value : true)
+fs = import('fs')
 
 vrui_files = files(
 'vrui.c',
@@ -27,4 +23,16 @@ vrui_files = files(
 
 )
 
+vrui = shared_library('svrui', vrui_files)
+
 subdir('example')
+
+cc = meson.get_compiler('c')
+openvr_lib_path = meson.source_root() + '/example'
+openvr = cc.find_library('openvr_api', dirs : [openvr_lib_path])
+
+opengl = dependency('gl')
+
+openvr_copy = fs.copyfile(meson.source_root() + '/example/openvr_api.dll')
+openvrpdb_copy = fs.copyfile(meson.source_root() + '/example/openvr_api.pdb')
+example = executable('svrui_example', example_files, dependencies : [openvr, opengl])

@@ -1,0 +1,5 @@
+
+option('vrui_example_build', type : 'boolean', value : true)
+option('vrui_example_ovrpath', type : 'string', value : 'openvr')
+option('vrui_app_name', type : 'string', value : 'DRIVER_6')
+option('vrui_shared', type : 'boolean', value : true)
