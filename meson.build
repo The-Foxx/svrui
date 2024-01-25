@@ -18,10 +18,22 @@ fs = import('fs')
 vrui_files = files(
 'vrui.c',
 'vrui.h',
+'vrui_base.h',
 'vrui_layout.c',
 'vrui_layout.h',
+'vrui_pal.h',
 
 )
+
+if build_machine.system() == 'linux'
+vrui_files += files('vrui_pal_linux.c')
+
+endif
+
+if build_machine.system() == 'windows'
+vrui_files += files('vrui_pal_win32.c')
+
+endif
 
 vrui = shared_library('svrui', vrui_files)
 
