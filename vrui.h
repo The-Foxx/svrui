@@ -56,6 +56,8 @@ extern "c" {
 #define VRCNF(string) vrui_log(string)
 #define VRCNFV(string) vrui_log_verbose(string)
 
+#define VRUI_MAX_MUTEX_DURATION 2000
+
 //    internal funcs
 	void vrui_log(const char* Str);
 	void vrui_log_verbose(const char* Str);
