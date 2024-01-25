@@ -12,7 +12,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////
 
-
+#include "vrui_base.h"
 
 #ifndef _VRUI_H_
 #define _VRUI_H_
@@ -40,17 +40,39 @@
 
 #endif
 
-typedef struct{
+#ifdef __cplusplus
+extern "c" {
 
+#endif
 
-} vrui_init_struct;
+#define VRC(string, ...) char[1024] String; \
+	sprintf(&String, string, __VA_ARGS__); \
+	vrui_log(String)
 
-typedef struct {
+#define VRCV(string, ...) char[1024] String; \
+	sprintf(&String, string, __VA_ARGS__); \
+	vrui_log_verbose(String)
 
-} vrui_st_gfx_func_struct;
+#define VRCNF(string) vrui_log(string)
+#define VRCNFV(string) vrui_log_verbose(string)
 
-VRUI_API int vrui_init(vrui_init_struct Info);
+//    internal funcs
+	void vrui_log(const char* Str);
+	void vrui_log_verbose(const char* Str);
 
-VRUI_API void vrui_set_global_offset(float X, float Y, float Z);
+	VRUI_API void vrui_setup_console_callback(void (*FuncPtr)(const char*));
+	VRUI_API void vrui_set_console_state(bool Verbose);
+	VRUI_API int vrui_init(vrui_init_struct Info);
+
+	VRUI_API void vrui_set_global_offset(float X, float Y, float Z);
+
+//    ui api
+	VRUI_API bool vrui_button(const char* Name);
+	VRUI_API void vrui_checkbox(bool* Value, const char* Name);
+	VRUI_API void vrui_text(const char* Text);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

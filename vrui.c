@@ -12,3 +12,36 @@
 //
 ////////////////////////////////////////////////////////////////////////////
 
+#include "vrui.h"
+#include "string.h"
+
+static void (*ConsoleCallback)(const char*);
+static bool IsConsoleVerbose = true;
+
+void vrui_log(const char* Str){
+	ConsoleCallback(Str);
+
+}
+
+void vrui_log_verbose(const char* Str) {
+	if (IsConsoleVerbose) {
+		ConsoleCallback(Str);
+
+	}
+
+}
+
+void vrui_set_console_state(bool Verbose) {
+	IsConsoleVerbose = Verbose;
+
+}
+
+int vrui_init(vrui_init_struct Info){
+	VRCNFV("Initializing SVRUI");
+
+}
+
+void vrui_setup_console_callback(void (*FuncPtr)(const char*)) {
+
+
+}

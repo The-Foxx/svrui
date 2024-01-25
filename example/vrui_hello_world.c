@@ -15,6 +15,7 @@
 #undef EXTERN_C
 #include "openvr_capi.h"
 
+#include "../vrui.h"
 
 // OpenVR Doesn't define these for some reason (I don't remmeber why) so we define the functions here. They are copy-pasted from the bottom of openvr_capi.h
 intptr_t VR_InitInternal( EVRInitError *peError, EVRApplicationType eType );
