@@ -3,7 +3,7 @@
 //  SVRUI Source File.
 //  Copyright (C) 2024 Clara Lille
 // -------------------------------------------------------------------------
-//  File name:   vrui_base.h
+//  File name:   vrui_pal_linux.c
 //  Version:     v1.00
 //  Created:     25/01/24 by Clara.
 //  Description: 
@@ -12,39 +12,26 @@
 //
 ////////////////////////////////////////////////////////////////////////////
 
-#include "stdbool.h"
+#define PAL_IMPL
 #include "vrui_pal.h"
+#include "pthread.h"
 
-#ifndef _VRUI_BASE_H_
-#define _VRUI_BASE_H_
+void vrui_init_mutex(vrui_mutex Mutex){
+	int Result = pthread_mutex_init(Mutex, NULL);
 
-typedef struct{
+}
 
+void vrui_destroy_mutex(vrui_mutex Mutex) {
+	int Result = pthread_mutex_destroy(Mutex);
 
-} vrui_init_struct;
+}
 
-typedef struct {
+void vrui_lock_mutex(vrui_mutex Mutex) {
+	int Result = pthread_mutex_lock(Mutex);
 
-} vrui_st_gfx_func_struct;
+}
 
-typedef struct {
+void vrui_unlock_mutex(vrui_mutex Mutex) {
+	int Result = pthread_mutex_unlock(Mutex);
 
-} vrui_onrender_info;
-
-typedef struct {
-	void* DataPtr;
-	vrui_mutex Mutex;
-	void (*FuncPtr)(vrui_onrender_info Onrenderinfo);
-
-} vrui_job;
-
-typedef struct {
-	void* DataPtr;
-	vrui_mutex Mutex;
-	void (*FuncPtr)(vrui_onrender_info Onrenderinfo);
-	int Index;
-	bool ShouldRender;
-
-} vrui_job_internal;
-
-#endif
+}
