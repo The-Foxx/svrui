@@ -35,7 +35,8 @@ vrui_files += files('vrui_pal_win32.c')
 
 endif
 
-vrui = shared_library('svrui', vrui_files)
+vrui = shared_library('svrui', vrui_files,
+c_args : '-DVRUI_SHARED')
 
 subdir('example')
 
