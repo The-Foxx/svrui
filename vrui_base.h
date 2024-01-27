@@ -19,7 +19,7 @@
 #define _VRUI_BASE_H_
 
 typedef struct{
-
+	vrui_gfx_init_struct Gfx;
 
 } vrui_init_struct;
 
@@ -60,5 +60,24 @@ typedef struct {
 	float X3, Y3, Z3, W3;
 
 } vrui_transform;
+
+typedef struct {
+
+
+	char Name[512];
+
+} vrui_window;
+
+typedef struct {
+	float X, Y, Z;
+	float UVX, UVY;
+
+} vrui_vert;
+
+typedef struct {
+	void (*OnGfxInit)();
+	void (*OnGfxDraw)();
+
+} vrui_gfx_init_struct;
 
 #endif
