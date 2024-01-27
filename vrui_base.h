@@ -18,6 +18,12 @@
 #ifndef _VRUI_BASE_H_
 #define _VRUI_BASE_H_
 
+typedef struct {
+	void (*OnGfxInit)();
+	void (*OnGfxDraw)();
+
+} vrui_gfx_init_struct;
+
 typedef struct{
 	vrui_gfx_init_struct Gfx;
 
@@ -73,11 +79,5 @@ typedef struct {
 	float UVX, UVY;
 
 } vrui_vert;
-
-typedef struct {
-	void (*OnGfxInit)();
-	void (*OnGfxDraw)();
-
-} vrui_gfx_init_struct;
 
 #endif
