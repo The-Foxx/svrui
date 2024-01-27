@@ -35,8 +35,15 @@ vrui_files += files('vrui_pal_win32.c')
 
 endif
 
+vrui_cargs = []
+
+if vrui_shared == true
+vrui_cargs += ['-DVRUI_SHARED']
+
+endif
+
 vrui = shared_library('svrui', vrui_files,
-c_args : '-DVRUI_SHARED')
+c_args : vrui_cargs)
 
 subdir('example')
 
