@@ -45,6 +45,9 @@ extern "c" {
 
 #endif
 
+//    TODO(clara): Implement !!!!!!!!!!
+#define VRUI_ASSERT (expression)
+
 #define VRC(string, ...) char[1024] String; \
 	sprintf(&String, string, __VA_ARGS__); \
 	vrui_log(String)
