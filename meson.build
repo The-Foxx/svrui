@@ -37,6 +37,7 @@ endif
 
 vrui_cargs = []
 
+vrui_shared = get_option('vrui_shared')
 if vrui_shared == true
 vrui_cargs += ['-DVRUI_SHARED']
 
