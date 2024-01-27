@@ -47,4 +47,18 @@ typedef struct {
 
 } vrui_job_internal;
 
+typedef struct {
+	float X, Y, Z;
+	float A, B, G;
+
+} vrui_rect;
+
+typedef struct {
+	float X0, Y0, Z0, W0;
+	float X1, Y1, Z1, W1;
+	float X2, Y2, Z2, W2;
+	float X3, Y3, Z3, W3;
+
+} vrui_transform;
+
 #endif
