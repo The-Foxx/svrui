@@ -15,6 +15,7 @@
 #define PAL_IMPL
 #include "vrui_pal.h"
 #include "vrui.h"
+#include "windows.h"
 
 void vrui_init_mutex(vrui_mutex Mutex){
 	Mutex.Mutex = CreateMutex(NULL, FALSE, NULL);

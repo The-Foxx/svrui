@@ -13,7 +13,9 @@
 ////////////////////////////////////////////////////////////////////////////
 
 #ifdef _WIN32
-#include "windows.h"
+//#include "windows.h"
+// Substituting windows.h for a few manual forward declarations
+typedef void* HANDLE;
 
 #else
 #include "pthread.h"
