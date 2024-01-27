@@ -16,17 +16,23 @@
 #include "vrui.h"
 #include "string.h"
 
-static void (*ConsoleCallback)(const char*);
+static void (*ConsoleCallback)(const char*) = NULL;
 static bool IsConsoleVerbose = true;
 
 void vrui_log(const char* Str){
-	ConsoleCallback(Str);
+	if (ConsoleCallback != NULL) {
+		ConsoleCallback(Str);
+
+	}
 
 }
 
 void vrui_log_verbose(const char* Str) {
 	if (IsConsoleVerbose) {
-		ConsoleCallback(Str);
+		if (ConsoleCallback != NULL) {
+			ConsoleCallback(Str);
+
+		}
 
 	}
 
