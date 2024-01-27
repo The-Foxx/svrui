@@ -46,6 +46,10 @@ void vrui_set_console_state(bool Verbose) {
 int vrui_init(vrui_init_struct Info){
 	VRCNFV("Initializing SVRUI");
 
+
+
+	return 0;
+
 }
 
 void vrui_setup_console_callback(void (*FuncPtr)(const char*)) {
