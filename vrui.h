@@ -71,10 +71,17 @@ extern "c" {
 
 	VRUI_API void vrui_set_global_offset(float X, float Y, float Z);
 
-//    ui api
+//        GUI
 	VRUI_API bool vrui_button(const char* Name);
 	VRUI_API void vrui_checkbox(bool* Value, const char* Name);
 	VRUI_API void vrui_text(const char* Text);
+
+//        GFX
+	VRUI_API void vrui_gfx_quad(vrui_window* Window, vrui_rect Rect, vrui_tex Tex, vrui_uva Uvc, bool IsTransparent);
+	VRUI_API void vrui_gfx_box(vrui_window* Window, vrui_rect Rect, vrui_tex Tex, vrui_uva Uvc, bool IsTransparent);
+	
+//    Raw gpu buffer
+	VRUI_API void vrui_gfx_grow_vert(vrui_window* Window, int Num, int Trans, int Ord);
 
 #ifdef __cplusplus
 }

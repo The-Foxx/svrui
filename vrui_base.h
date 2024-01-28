@@ -69,8 +69,27 @@ typedef struct {
 
 typedef struct {
 
+//    Rendering data
+	vrui_transform Pos;
+	vrui_vert* VertBuf;
+	int VertBufSize;
+	int VertBufAlloc;
+	vrui_vert* AlphaBuf;
+	int AlphaBufSize;
+	int AlphaBufAlloc;
+	int* OrdBuf;
+	int OrdBufSize;
+	int OrdBufAlloc;
+//    TODO(clara): Make this a dynamic size buffer on the heap !!!
+	vrui_vert VertBuffer[5000];
+	vrui_vert AlphaBuffer[1000];
+	int OrdBuffer[15000];
 
+//    note(clara): This needs to be at the bottom for cache frienliness
+//        because its a big enouth array that we dont want to have to pull up
+//        two cache lines to get the window data for rendering and layout
 	char Name[512];
+	int NameSize;
 
 } vrui_window;
 
@@ -79,5 +98,15 @@ typedef struct {
 	float UVX, UVY;
 
 } vrui_vert;
+
+typedef struct {
+	float X, Y, Z, W;
+
+} vrui_uva;
+
+typedef struct {
+//    TODO(clara): Implement texture handle !!!
+
+} vrui_tex;
 
 #endif
