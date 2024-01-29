@@ -78,19 +78,27 @@ typedef struct {
 
 //    Rendering data
 	vrui_transform Pos;
+
+
+//    Cache line for rendering
 	vrui_vert* VertBuf;
 	int VertBufSize;
 	int VertBufAlloc;
 	vrui_vert* AlphaBuf;
 	int AlphaBufSize;
 	int AlphaBufAlloc;
+	int* AOrdBuf;
+	int AOrdBufSize;
+	int AOrdBufAlloc;
 	int* OrdBuf;
 	int OrdBufSize;
 	int OrdBufAlloc;
+	
 //    TODO(clara): Make this a dynamic size buffer on the heap !!!
 	vrui_vert VertBuffer[5000];
 	vrui_vert AlphaBuffer[1000];
 	int OrdBuffer[15000];
+	int AOrdBuffer[3000];
 
 //    note(clara): This needs to be at the bottom for cache frienliness
 //        because its a big enouth array that we dont want to have to pull up
