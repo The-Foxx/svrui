@@ -79,7 +79,8 @@ extern "c" {
 //        GFX
 	VRUI_API void vrui_gfx_quad(vrui_window* Window, vrui_rect* Rect, vrui_tex Tex, vrui_uva Uvc, bool IsTransparent);
 	VRUI_API void vrui_gfx_box(vrui_window* Window, vrui_rect* Rect, vrui_tex Tex, vrui_uva Uvc, bool IsTransparent);
-	VRUI_API void vrui_gfx_tri_list(vrui_window* Window, vrui_vert* VertPtr, int VertNumber, int* IndexPtr, int IndexNumber, bool IsTransparent);
+	VRUI_API void vrui_gfx_tri_list(vrui_window* Window, vrui_vert* VertPtr, int VertNumber,
+	                                int* OrdPtr, int OrdNumber, bool IsTransparent);
 	
 //    Raw gpu buffer
 	VRUI_API void vrui_gfx_grow_vert(vrui_window* Window, int Num, int Trans, int Ord);
