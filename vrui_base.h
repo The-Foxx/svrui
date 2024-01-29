@@ -70,6 +70,7 @@ typedef struct {
 typedef struct {
 	float X, Y, Z;
 	float UVX, UVY;
+	float A;
 
 } vrui_vert;
 
