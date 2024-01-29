@@ -32,13 +32,20 @@ void vrui_gfx_quad(vrui_window* Window, vrui_rect* Rect, vrui_tex Tex, vrui_uva 
 
 	const float ZPos = Rect->Z;
 
-	*ItPtr = { Rect->X, Rect->Y, ZPos };
+	vrui_vert Vert1 = { .X = Rect->X, .Y = Rect->Y, .Z = ZPos, .UVX = 0, .UVY = 0 };
+	*ItPtr = Vert1;
 	ItPtr++;
-	*ItPtr = { Rect->A, Rect->Y, ZPos };
+
+	vrui_vert Vert2 = { .X = Rect->A, .Y = Rect->Y, .Z = ZPos, .UVX = 0, .UVY = 0 };
+	*ItPtr = Vert2;
 	ItPtr++;
-	*ItPtr = { Rect->A, Rect->B, ZPos };
+
+	vrui_vert Vert3 = { .X = Rect->A, .Y = Rect->B, .Z = ZPos, .UVX = 0, .UVY = 0 };
+	*ItPtr = Vert3;
 	ItPtr++;
-	*ItPtr = { Rect->X, Rect->B, ZPos };
+
+	vrui_vert Vert4 = { .X = Rect->X, .Y = Rect->B, .Z = ZPos, .UVX = 0, .UVY = 0 };
+	*ItPtr = Vert4;
 
 }
 

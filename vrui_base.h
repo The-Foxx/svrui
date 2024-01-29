@@ -68,6 +68,12 @@ typedef struct {
 } vrui_transform;
 
 typedef struct {
+	float X, Y, Z;
+	float UVX, UVY;
+
+} vrui_vert;
+
+typedef struct {
 
 //    Rendering data
 	vrui_transform Pos;
@@ -92,12 +98,6 @@ typedef struct {
 	int NameSize;
 
 } vrui_window;
-
-typedef struct {
-	float X, Y, Z;
-	float UVX, UVY;
-
-} vrui_vert;
 
 typedef struct {
 	float X, Y, Z, W;
