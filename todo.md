@@ -1,5 +1,10 @@
 ### my todo list
 
+- Add text rendering
+- Make sub window happen
+- Add sliders
+- Add text input
+
 ### datatype bloopers
 
 #unicolor vert:
