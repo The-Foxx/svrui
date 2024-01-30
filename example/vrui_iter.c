@@ -28,6 +28,7 @@ int main(int argc, char* argv[]){
 	vrui_init_struct InitStruct;
 	InitStruct.Gfx = InitGfx;
 
+	vrui_setup_console_callback(&vrui_log_impl);
 	vrui_init(InitStruct);
 
 	return 0;

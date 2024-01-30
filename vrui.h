@@ -55,11 +55,11 @@ extern "c" {
 #define VRCNFV(string)
 
 #else
-#define VRC(string, ...) char[1024] String; \
+#define VRC(string, ...) char String[1024]; \
 	sprintf(&String[0], string, __VA_ARGS__); \
 	vrui_log(String)
 
-#define VRCV(string, ...) char[1024] String; \
+#define VRCV(string, ...) char String[1024]; \
 	sprintf(&String[0], string, __VA_ARGS__); \
 	vrui_log_verbose(String)
 
