@@ -59,3 +59,5 @@ opengl = dependency('gl')
 openvr_copy = fs.copyfile(meson.source_root() + '/example/openvr_api.dll')
 openvrpdb_copy = fs.copyfile(meson.source_root() + '/example/openvr_api.pdb')
 example = executable('svrui_example', example_files, link_with : vrui, dependencies : [openvr, opengl])
+
+iter = executable('svrui_test', iter_files, link_with : vrui)
