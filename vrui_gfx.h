@@ -16,7 +16,7 @@
 
 #ifndef _VRUI_GFX_H_
 #define _VRUI_GFX_H_
-
+int vrui_optimal_buffer_size(int StartSize, int TargetSize);
 
 #endif
 

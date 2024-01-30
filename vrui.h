@@ -112,7 +112,7 @@ extern "c" {
 	                                int* OrdPtr, int OrdNumber, bool IsTransparent);
 	
 //    Raw gpu buffer
-	VRUI_API void vrui_gfx_grow_vert(vrui_window* Window, int Num, int Trans, int Ord);
+	VRUI_API void vrui_gfx_grow_vert(vrui_window* Window, int Num, int Trans, int Ord, int AOrd);
 
 #ifdef __cplusplus
 }

@@ -16,8 +16,23 @@
 #define VRUI_IMPL
 #include "vrui.h"
 
+int vrui_optimal_buffer_size(int StartSize, int TargetSize){
+	int Result = StartSize;
+	for (int i = 0; i < 100; i++) {
+		if (Result > TargetSize) {
+			return Result;
+
+		}
+		Result *= 2;
+
+	}
+
+	VRC("[ERROR] Could not determine adequate buffer size for target %i and start %i", TargetSize, StartSize);
+
+}
+
 void vrui_gfx_quad(vrui_window* Window, vrui_rect* Rect, vrui_tex Tex, vrui_uva Uvc, bool IsTransparent){
-	vrui_gfx_grow_vert(Window, 4, 4, 6);
+	vrui_gfx_grow_vert(Window, 4, 4, 6, 6);
 
 	vrui_vert* ItPtr;
 	int* OrdPtr;
@@ -95,7 +110,37 @@ void vrui_gfx_quad(vrui_window* Window, vrui_rect* Rect, vrui_tex Tex, vrui_uva 
 
 }
 
-void vrui_gfx_grow_vert(vrui_window* Window, int Num, int Trans, int Ord) {
-//    TODO(clara): Implement
+void vrui_gfx_grow_vert(vrui_window* Window, int Num, int Trans, int Ord, int AOrd) {
+	if (Window->VertBufAlloc < (Window->VertBufSize + Num)) {
+		//VRC("Not enouth vert space %i", vrui_optimal_buffer_size(Window->VertBufAlloc, Num));
+		int NewTargetSize = vrui_optimal_buffer_size(Window->VertBufAlloc, Num);
+		Window->VertBuf = vrui_realloc(Window->VertBuf, NewTargetSize * sizeof(vrui_vert));
+		Window->VertBufAlloc = NewTargetSize;
+
+	}
+
+	if (Window->OrdBufAlloc < (Window->OrdBufSize + Ord)) {
+		//VRCNF("Not enouth ord space");
+		int NewTargetsize = vrui_optimal_buffer_size(Window->OrdBufAlloc, Ord);
+		Window->OrdBuf = vrui_realloc(Window->OrdBuf, NewTargetsize * sizeof(int));
+		Window->OrdBufAlloc = NewTargetsize;
+
+	}
+
+	if (Window->AlphaBufAlloc < (Window->AlphaBufSize + Trans)) {
+		//VRCNF("Not enouth Alpha space");
+		int NewTargetSize = vrui_optimal_buffer_size(Window->AlphaBufAlloc, Trans);
+		Window->AlphaBuf = vrui_realloc(Window->AlphaBuf, NewTargetSize * sizeof(vrui_vert));
+		Window->AlphaBufAlloc = NewTargetSize;
+
+	}
+
+	if (Window->AOrdBufAlloc < (Window->AOrdBufSize + AOrd)) {
+		//VRCNF("Not enouth alpha ord space");
+		int NewTargetSize = vrui_optimal_buffer_size(Window->AOrdBufAlloc, AOrd);
+		Window->AOrdBuf = vrui_realloc(Window->AOrdBuf, NewTargetSize * sizeof(int));
+		Window->AOrdBufAlloc = NewTargetSize;
+
+	}
 
 }

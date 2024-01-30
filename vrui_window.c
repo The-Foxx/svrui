@@ -15,6 +15,7 @@
 #define VRUI_IMPL
 #include "vrui.h"
 #include "vrui_window.h"
+#include <string.h>
 
 static vrui_window* WindowRegPtr = NULL;
 static int WindowRegSize = 0;
@@ -66,6 +67,29 @@ vrui_window* vrui_new_window(vrui_job InJob, const char* Name) {
 void vrui_new_window_init(vrui_window* Window) {
 	{
 		Window->VertBuf = vrui_alloc(1024 * sizeof(vrui_vert));
+		Window->VertBufSize = 0;
+		Window->VertBufAlloc = 1024;
+
+	}
+
+	{
+		Window->OrdBuf = vrui_alloc(4096 * sizeof(int));
+		Window->OrdBufSize = 0;
+		Window->OrdBufAlloc = 4096;
+
+	}
+
+	{
+		Window->AlphaBuf = vrui_alloc(256 * sizeof(vrui_vert));
+		Window->AlphaBufSize = 0;
+		Window->AlphaBufAlloc = 256;
+
+	}
+
+	{
+		Window->AOrdBuf = vrui_alloc(1024 * sizeof(int));
+		Window->AOrdBufSize = 0;
+		Window->AOrdBufAlloc = 1024;
 
 	}
 
