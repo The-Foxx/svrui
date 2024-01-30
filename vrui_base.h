@@ -59,7 +59,10 @@ typedef struct {
 
 //    Rendering data
 	vrui_transform Pos;
-
+	void* DataPtr;
+	vrui_mutex UserMutex;
+	void (*FuncPtr)(vrui_onrender_info Onrenderinfo);
+	void (*SteadyPtr)(vrui_onrender_info Onrenderinfo);
 
 //    Cache line for rendering
 	vrui_vert* VertBuf;
@@ -76,10 +79,10 @@ typedef struct {
 	int OrdBufAlloc;
 	
 //    TODO(clara): Make this a dynamic size buffer on the heap !!!
-	vrui_vert VertBuffer[5000];
-	vrui_vert AlphaBuffer[1000];
-	int OrdBuffer[15000];
-	int AOrdBuffer[3000];
+	//vrui_vert VertBuffer[5000];
+	//vrui_vert AlphaBuffer[1000];
+	//int OrdBuffer[15000];
+	//int AOrdBuffer[3000];
 
 //    note(clara): This needs to be at the bottom for cache frienliness
 //        because its a big enouth array that we dont want to have to pull up
@@ -111,15 +114,5 @@ typedef struct {
 	void (*SteadyPtr)(vrui_onrender_info Onrenderinfo);
 
 } vrui_job;
-
-typedef struct {
-	void* DataPtr;
-	vrui_mutex Mutex;
-	void (*FuncPtr)(vrui_onrender_info Onrenderinfo);
-	void (*SteadyPtr)(vrui_onrender_info Onrenderinfo);
-	int Index;
-	bool ShouldRender;
-
-} vrui_job_internal;
 
 #endif
