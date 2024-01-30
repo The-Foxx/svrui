@@ -92,7 +92,7 @@ extern "c" {
 	VRUI_API void vrui_set_scry();
 
 //        WINDOW
-	VRUI_API vrui_window* vrui_new_window(vrui_job InJob);
+	VRUI_API vrui_window* vrui_new_window(vrui_job InJob, const char* Name);
 	VRUI_API void vrui_delete_window(vrui_window* Window);
 	VRUI_API vrui_window* vrui_get_window(int Index);
 

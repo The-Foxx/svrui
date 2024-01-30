@@ -48,13 +48,15 @@ vrui_window* vrui_get_window(int Index) {
 
 }
 
-vrui_window* vrui_new_window(vrui_job InJob) {
+vrui_window* vrui_new_window(vrui_job InJob, const char* Name) {
 	vrui_window* Result;
 	Result = WindowRegPtr + WindowRegSize;
 	Result->FuncPtr = InJob.FuncPtr;
 	Result->SteadyPtr = InJob.SteadyPtr;
 	Result->DataPtr = InJob.DataPtr;
 	Result->UserMutex = InJob.Mutex;
+	memset(&Result->Name[0], 0, 512);
+	strcpy(&Result->Name[0], Name);
 	vrui_new_window_init(Result);
 
 	return Result;
