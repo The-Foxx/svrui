@@ -48,16 +48,25 @@ extern "c" {
 //    TODO(clara): Implement !!!!!!!!!!
 #define VRUI_ASSERT (expression)
 
+#ifdef VRUI_LOG_DISABLE
+#define VRC(string, ...)
+#define VRCV(string, ...)
+#define VRCNF(string)
+#define VRCNFV(string)
+
+#else
 #define VRC(string, ...) char[1024] String; \
-	sprintf(&String, string, __VA_ARGS__); \
+	sprintf(&String[0], string, __VA_ARGS__); \
 	vrui_log(String)
 
 #define VRCV(string, ...) char[1024] String; \
-	sprintf(&String, string, __VA_ARGS__); \
+	sprintf(&String[0], string, __VA_ARGS__); \
 	vrui_log_verbose(String)
 
 #define VRCNF(string) vrui_log(string)
 #define VRCNFV(string) vrui_log_verbose(string)
+
+#endif
 
 #define VRUI_MAX_MUTEX_DURATION 2000
 
