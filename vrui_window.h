@@ -18,6 +18,7 @@
 #define _VRUI_WINDOW_H_
 void vrui_window_grow(int Size);
 void vrui_window_init();
+void vrui_new_window_init(vrui_window* Window);
 
 #endif
 

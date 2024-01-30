@@ -14,7 +14,6 @@
 
 #define VRUI_IMPL
 #include "vrui.h"
-#include "stdlib.h"
 
 static vrui_window* WindowRegPtr = NULL;
 static int WindowRegSize = 0;
@@ -30,7 +29,7 @@ void vrui_window_grow(int Size){
 }
 
 void vrui_window_init() {
-	WindowRegPtr = malloc(sizeof(vrui_window) * 16);
+	WindowRegPtr = vrui_alloc(sizeof(vrui_window) * 16);
 	WindowRegAlloc = 16;
 
 	return;
@@ -45,5 +44,26 @@ vrui_window* vrui_get_window(int Index) {
 
 	vrui_window* Result = WindowRegPtr + Index;
 	return Result;
+
+}
+
+vrui_window* vrui_new_window(vrui_job InJob) {
+	vrui_window* Result;
+	Result = WindowRegPtr + WindowRegSize;
+	Result->FuncPtr = InJob.FuncPtr;
+	Result->SteadyPtr = InJob.SteadyPtr;
+	Result->DataPtr = InJob.DataPtr;
+	Result->UserMutex = InJob.Mutex;
+	vrui_new_window_init(Result);
+
+	return Result;
+
+}
+
+void vrui_new_window_init(vrui_window* Window) {
+	{
+		Window->VertBuf = vrui_alloc(1024 * sizeof(vrui_vert));
+
+	}
 
 }
