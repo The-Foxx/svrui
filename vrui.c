@@ -60,9 +60,9 @@ void vrui_window_debug_dump_console(vrui_window* Window) {
 
 	{
 		vrui_vert* VertIter = Window->VertBuf;
-		for (int i = 0; i < Window->VertBufSize, i++) {
+		for (int i = 0; i < Window->VertBufSize; i++) {
 			VRC("    Vert %i X %f Y %f Z %f UV0 %f UV1 %f", VertIter->X, VertIter->Y, VertIter->Z, VertIter->UVX, VertIter->UVY);
-			VertIter++
+			VertIter++;
 
 		}
 
