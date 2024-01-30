@@ -54,3 +54,28 @@ void vrui_setup_console_callback(void (*FuncPtr)(const char*)) {
 	ConsoleCallback = FuncPtr;
 
 }
+
+void vrui_window_debug_dump_console(vrui_window* Window) {
+	VRCNF("Window vert buffer :");
+
+	{
+		vrui_vert* VertIter = Window->VertBuf;
+		for (int i = 0; i < Window->VertBufSize, i++) {
+			VRC("    Vert %i X %f Y %f Z %f UV0 %f UV1 %f", VertIter->X, VertIter->Y, VertIter->Z, VertIter->UVX, VertIter->UVY);
+			VertIter++
+
+		}
+
+	}
+
+	{
+		int* Iter = Window->OrdBuf;
+		for (int i = 0; i < Window->OrdBufSize; i++) {
+			VRC("    Index %i Vert %i", i, *Iter);
+			Iter++;
+
+		}
+
+	}
+
+}

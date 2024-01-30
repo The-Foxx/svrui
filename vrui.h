@@ -80,6 +80,8 @@ extern "c" {
 //    Init
 	VRUI_API int vrui_init(vrui_init_struct Info);
 	VRUI_API void vrui_easy_init();
+//    Debug
+	VRUI_API void vrui_window_debug_dump_console(vrui_window* Window);
 
 //        LIB STATE
 	VRUI_API void vrui_set_global_offset(float X, float Y, float Z);
