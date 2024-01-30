@@ -64,12 +64,13 @@ void vrui_gfx_quad(vrui_window* Window, vrui_rect* Rect, vrui_tex Tex, vrui_uva 
 #ifndef VRUI_NO_NULL_PTR_CHECK
 	if (OrdPtr == NULL) {
 		VRCNF("Error processing quad order generation");
+		return;
 
 	}
 
 	if (ItPtr == NULL) {
 		VRCNF("Error processing quad vertex generation");
-
+		return;
 	}
 
 #endif
