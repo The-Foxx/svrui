@@ -22,7 +22,7 @@ void vrui_log_impl(const char* Log){
 
 int main(int argc, char* argv[]){
 	vrui_gfx_init_struct InitGfx;
-	InitGfx = NULL;
+	InitGfx = (vrui_gfx_init_struct)NULL;
 
 	vrui_init_struct InitStruct;
 	InitStruct.Gfx = InitGfx;
