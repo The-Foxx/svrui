@@ -65,16 +65,26 @@ extern "c" {
 	void vrui_log(const char* Str);
 	void vrui_log_verbose(const char* Str);
 
+//    Pre init
 	VRUI_API void vrui_setup_console_callback(void (*FuncPtr)(const char*));
 	VRUI_API void vrui_set_console_state(bool Verbose);
+//    Init
 	VRUI_API int vrui_init(vrui_init_struct Info);
+	VRUI_API void vrui_easy_init();
 
+//        LIB STATE
 	VRUI_API void vrui_set_global_offset(float X, float Y, float Z);
+	VRUI_API bool vrui_scry();
+	VRUI_API void vrui_set_scry();
 
 //        GUI
 	VRUI_API bool vrui_button(const char* Name);
 	VRUI_API void vrui_checkbox(bool* Value, const char* Name);
 	VRUI_API void vrui_text(const char* Text);
+
+//    Notification
+	VRUI_API void vrui_notif(const char* Text, float* Completion, unsigned int* NumberCompletion, vrui_tex Tex, vrui_uva Uva);
+	VRUI_API void vrui_notif_text(const char* Text, vrui_tex Tex, vrui_uva Uva);
 
 //        GFX
 	VRUI_API void vrui_gfx_quad(vrui_window* Window, vrui_rect* Rect, vrui_tex Tex, vrui_uva Uvc, bool IsTransparent);
