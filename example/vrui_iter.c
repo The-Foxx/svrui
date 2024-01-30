@@ -44,6 +44,8 @@ int main(int argc, char* argv[]){
 	vrui_uva TestUvc;
 	vrui_gfx_quad(&TestWindow, &TestRect, TestTexture, TestUvc, false);
 
+	vrui_window_debug_dump_console(&TestWindow);
+
 	return 0;
 
 }
