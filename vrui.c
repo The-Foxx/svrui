@@ -89,8 +89,13 @@ void vrui_setup_console_callback(void (*FuncPtr)(const char*)) {
 }
 
 void vrui_window_debug_dump_console(vrui_window* Window) {
+	VRC("Printing debug for window name %s", Window->Name);
+	VRC("VertBufSize: %i VertBufAlloc: %i OrdBufSize: %i OrdBufAlloc: %i",
+	    Window->VertBufSize, Window->VertBufAlloc, Window->OrdBufSize, Window->OrdBufAlloc);
+	VRC("AlphaBufSize: %i AlphaBufAlloc: %i AOrdBufSize: %i AOrdBufAlloc: %i",
+	    Window->AlphaBufSize, Window->AlphaBufAlloc, Window->AOrdBufSize, Window->AOrdBufAlloc);
+	
 	VRCNF("Window vert buffer :");
-
 	{
 		vrui_vert* VertIter = Window->VertBuf;
 		for (int i = 0; i < Window->VertBufSize; i++) {
@@ -105,7 +110,7 @@ void vrui_window_debug_dump_console(vrui_window* Window) {
 	{
 		int* Iter = Window->OrdBuf;
 		for (int i = 0; i < Window->OrdBufSize; i++) {
-			VRC("    Index %i Vert %i", i, *Iter);
+			VRC("    Index %i Vert %i", i, *Iter)
 			Iter++;
 
 		}
