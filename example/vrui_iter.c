@@ -32,16 +32,29 @@ int main(int argc, char* argv[]){
 	vrui_init(InitStruct);
 
 	vrui_window TestWindow;
-	TestWindow.VertBufSize = 4;
-	TestWindow.OrdBufSize = 6;
+	//TestWindow.VertBufSize = 4;
+	//TestWindow.OrdBufSize = 6;
 	TestWindow.VertBuf = &TestWindow.VertBuffer[0];
 	TestWindow.OrdBuf = &TestWindow.OrdBuffer[0];
 
 	vrui_window_debug_dump_console(&TestWindow);
 
 	vrui_rect TestRect;
+	TestRect.X = 0.1;
+	TestRect.Y = 0.1;
+	TestRect.Z = 0.1;
+	TestRect.A = 0.9;
+	TestRect.B = 0.9;
+	TestRect.G = 0.9;
+
 	vrui_tex TestTexture;
 	vrui_uva TestUvc;
+	TestUvc.X = 0.1;
+	TestUvc.Y = 0.1;
+	TestUvc.Z = 0.9;
+	TestUvc.W = 0.9;
+
+	vrui_gfx_quad(&TestWindow, &TestRect, TestTexture, TestUvc, false);
 	vrui_gfx_quad(&TestWindow, &TestRect, TestTexture, TestUvc, false);
 
 	vrui_window_debug_dump_console(&TestWindow);
