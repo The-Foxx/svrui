@@ -20,13 +20,29 @@ void vrui_gfx_quad(vrui_window* Window, vrui_rect* Rect, vrui_tex Tex, vrui_uva 
 	vrui_gfx_grow_vert(Window, 4, 4, 6);
 
 	vrui_vert* ItPtr;
+	int* OrdPtr;
+	int OrdFirst;
 	if (IsTransparent) {
+		OrdFirst = Window->AlphaBufSize;
+
 		ItPtr = Window->AlphaBuf;
 		ItPtr += Window->AlphaBufSize;
+		Window->AlphaBufSize += 4;
+
+		OrdPtr = Window->AOrdBuf;
+		OrdPtr += Window->AOrdBufSize;
+		Window->AOrdBufSize += 6;
 
 	} else {
+		OrdFirst = Window->VertBufSize;
+
 		ItPtr = Window->VertBuf;
 		ItPtr += Window->VertBufSize;
+		Window->VertBufSize += 4;
+
+		OrdPtr = Window->OrdBuf;
+		OrdPtr += Window->OrdBufSize;
+		Window->OrdBufSize += 6;
 
 	}
 
@@ -46,6 +62,23 @@ void vrui_gfx_quad(vrui_window* Window, vrui_rect* Rect, vrui_tex Tex, vrui_uva 
 
 	vrui_vert Vert4 = { .X = Rect->X, .Y = Rect->B, .Z = ZPos, .UVX = 0, .UVY = 0 };
 	*ItPtr = Vert4;
+
+	*OrdPtr = OrdFirst;
+	OrdPtr++;
+
+	*OrdPtr = OrdFirst + 2;
+	OrdPtr++;
+
+	*OrdPtr = OrdFirst + 3;
+	OrdPtr++;
+
+	*OrdPtr = OrdFirst;
+	OrdPtr++;
+	
+	*OrdPtr = OrdFirst + 1;
+	OrdPtr++;
+
+	*OrdPtr = OrdFirst + 2;
 
 }
 
