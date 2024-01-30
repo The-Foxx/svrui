@@ -46,6 +46,16 @@ void vrui_gfx_quad(vrui_window* Window, vrui_rect* Rect, vrui_tex Tex, vrui_uva 
 
 	}
 
+	if (OrdPtr == NULL) {
+		VRCNF("Error processing quad order generation");
+
+	}
+
+	if (ItPtr == NULL) {
+		VRCNF("Error processing quad vertex generation");
+
+	}
+
 	const float ZPos = Rect->Z;
 
 	vrui_vert Vert1 = { .X = Rect->X, .Y = Rect->Y, .Z = ZPos, .UVX = Uvc.X, .UVY = Uvc.W };
