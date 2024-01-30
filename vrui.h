@@ -77,6 +77,10 @@ extern "c" {
 	VRUI_API bool vrui_scry();
 	VRUI_API void vrui_set_scry();
 
+//        WINDOW
+	VRUI_API vrui_window* vrui_new_window(vrui_job InJob);
+	VRUI_API void vrui_delete_window(vrui_window* Window);
+
 //        GUI
 	VRUI_API bool vrui_button(const char* Name);
 	VRUI_API void vrui_checkbox(bool* Value, const char* Name);

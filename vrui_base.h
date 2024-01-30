@@ -34,17 +34,6 @@ typedef struct {
 } vrui_st_gfx_func_struct;
 
 typedef struct {
-
-} vrui_onrender_info;
-
-typedef struct {
-	void* DataPtr;
-	vrui_mutex Mutex;
-	void (*FuncPtr)(vrui_onrender_info Onrenderinfo);
-
-} vrui_job;
-
-typedef struct {
 	void* DataPtr;
 	vrui_mutex Mutex;
 	void (*FuncPtr)(vrui_onrender_info Onrenderinfo);
@@ -117,5 +106,18 @@ typedef struct {
 //    TODO(clara): Implement texture handle !!!
 
 } vrui_tex;
+
+typedef struct {
+	vrui_window* CurrWindow;
+
+} vrui_onrender_info;
+
+typedef struct {
+	void* DataPtr;
+	vrui_mutex Mutex;
+	void (*FuncPtr)(vrui_onrender_info Onrenderinfo);
+	void (*SteadyPtr)(vrui_onrender_info Onrenderinfo);
+
+} vrui_job;
 
 #endif
