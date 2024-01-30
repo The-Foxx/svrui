@@ -39,6 +39,11 @@ int main(int argc, char* argv[]){
 
 	vrui_window_debug_dump_console(&TestWindow);
 
+	vrui_rect TestRect;
+	vrui_tex TestTexture;
+	vrui_uva TestUvc;
+	vrui_gfx_quad(&TestWindow, &TestRect, TestTexture, TestUvc, false);
+
 	return 0;
 
 }
