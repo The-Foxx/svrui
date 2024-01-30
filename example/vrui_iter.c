@@ -31,6 +31,12 @@ int main(int argc, char* argv[]){
 	vrui_setup_console_callback(&vrui_log_impl);
 	vrui_init(InitStruct);
 
+	vrui_window TestWindow;
+	TestWindow.VertBufSize = 4;
+	TestWindow.OrdBufSize = 6;
+
+	vrui_window_debug_dump_console(&TestWindow);
+
 	return 0;
 
 }
