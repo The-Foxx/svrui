@@ -48,19 +48,19 @@ void vrui_gfx_quad(vrui_window* Window, vrui_rect* Rect, vrui_tex Tex, vrui_uva 
 
 	const float ZPos = Rect->Z;
 
-	vrui_vert Vert1 = { .X = Rect->X, .Y = Rect->Y, .Z = ZPos, .UVX = 0, .UVY = 0 };
+	vrui_vert Vert1 = { .X = Rect->X, .Y = Rect->Y, .Z = ZPos, .UVX = Uvc.X, .UVY = Uvc.W };
 	*ItPtr = Vert1;
 	ItPtr++;
 
-	vrui_vert Vert2 = { .X = Rect->A, .Y = Rect->Y, .Z = ZPos, .UVX = 0, .UVY = 0 };
+	vrui_vert Vert2 = { .X = Rect->A, .Y = Rect->Y, .Z = ZPos, .UVX = Uvc.Z, .UVY = Uvc.W };
 	*ItPtr = Vert2;
 	ItPtr++;
 
-	vrui_vert Vert3 = { .X = Rect->A, .Y = Rect->B, .Z = ZPos, .UVX = 0, .UVY = 0 };
+	vrui_vert Vert3 = { .X = Rect->A, .Y = Rect->B, .Z = ZPos, .UVX = Uvc.Z, .UVY = Uvc.Y };
 	*ItPtr = Vert3;
 	ItPtr++;
 
-	vrui_vert Vert4 = { .X = Rect->X, .Y = Rect->B, .Z = ZPos, .UVX = 0, .UVY = 0 };
+	vrui_vert Vert4 = { .X = Rect->X, .Y = Rect->B, .Z = ZPos, .UVX = Uvc.X, .UVY = Uvc.Y };
 	*ItPtr = Vert4;
 
 	*OrdPtr = OrdFirst;
