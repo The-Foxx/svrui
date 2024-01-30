@@ -68,6 +68,7 @@ void vrui_window_debug_dump_console(vrui_window* Window) {
 
 	}
 
+	VRCNF("Window ord buffer :");
 	{
 		int* Iter = Window->OrdBuf;
 		for (int i = 0; i < Window->OrdBufSize; i++) {
