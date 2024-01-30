@@ -23,7 +23,7 @@ static int WindowRegAlloc = 0;
 void vrui_window_grow(int Size){
 	if (Size > WindowRegAlloc) {
 		int NewTargetSize = WindowRegAlloc * 2;
-		WindowRegPtr = Realloc(WindowRegPtr, NewTargetSize * sizeof(vrui_window));
+		WindowRegPtr = realloc(WindowRegPtr, NewTargetSize * sizeof(vrui_window));
 
 	}
 
