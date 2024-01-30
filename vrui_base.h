@@ -34,15 +34,6 @@ typedef struct {
 } vrui_st_gfx_func_struct;
 
 typedef struct {
-	void* DataPtr;
-	vrui_mutex Mutex;
-	void (*FuncPtr)(vrui_onrender_info Onrenderinfo);
-	int Index;
-	bool ShouldRender;
-
-} vrui_job_internal;
-
-typedef struct {
 	float X, Y, Z;
 	float A, B, G;
 
@@ -119,5 +110,15 @@ typedef struct {
 	void (*SteadyPtr)(vrui_onrender_info Onrenderinfo);
 
 } vrui_job;
+
+typedef struct {
+	void* DataPtr;
+	vrui_mutex Mutex;
+	void (*FuncPtr)(vrui_onrender_info Onrenderinfo);
+	void (*SteadyPtr)(vrui_onrender_info Onrenderinfo);
+	int Index;
+	bool ShouldRender;
+
+} vrui_job_internal;
 
 #endif
