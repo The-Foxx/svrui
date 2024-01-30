@@ -15,6 +15,7 @@
 #define VRUI_IMPL
 #include "vrui.h"
 #include "string.h"
+#include "vrui_window.h"
 
 static void (*ConsoleCallback)(const char*) = NULL;
 static bool IsConsoleVerbose = true;
@@ -45,6 +46,7 @@ void vrui_set_console_state(bool Verbose) {
 
 int vrui_init(vrui_init_struct Info){
 	VRCNFV("Initializing SVRUI");
+	vrui_window_init();
 
 	return 0;
 

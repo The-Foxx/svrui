@@ -91,6 +91,7 @@ extern "c" {
 //        WINDOW
 	VRUI_API vrui_window* vrui_new_window(vrui_job InJob);
 	VRUI_API void vrui_delete_window(vrui_window* Window);
+	VRUI_API vrui_window* vrui_get_window(int Index);
 
 //        GUI
 	VRUI_API bool vrui_button(const char* Name);

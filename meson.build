@@ -24,6 +24,8 @@ vrui_files = files(
 'vrui_layout.c',
 'vrui_layout.h',
 'vrui_pal.h',
+'vrui_window.c',
+'vrui_window.h',
 
 )
 
