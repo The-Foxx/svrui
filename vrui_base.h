@@ -56,6 +56,11 @@ typedef struct {
 } vrui_vert;
 
 typedef struct {
+	void* CurrWindow;
+
+} vrui_onrender_info;
+
+typedef struct {
 
 //    Rendering data
 	vrui_transform Pos;
@@ -101,11 +106,6 @@ typedef struct {
 //    TODO(clara): Implement texture handle !!!
 
 } vrui_tex;
-
-typedef struct {
-	vrui_window* CurrWindow;
-
-} vrui_onrender_info;
 
 typedef struct {
 	void* DataPtr;

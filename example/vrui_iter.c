@@ -34,8 +34,8 @@ int main(int argc, char* argv[]){
 	vrui_window TestWindow;
 	//TestWindow.VertBufSize = 4;
 	//TestWindow.OrdBufSize = 6;
-	TestWindow.VertBuf = &TestWindow.VertBuffer[0];
-	TestWindow.OrdBuf = &TestWindow.OrdBuffer[0];
+	//TestWindow.VertBuf = &TestWindow.VertBuffer[0];
+	//TestWindow.OrdBuf = &TestWindow.OrdBuffer[0];
 
 	vrui_window_debug_dump_console(&TestWindow);
 

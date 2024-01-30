@@ -14,6 +14,7 @@
 
 #define VRUI_IMPL
 #include "vrui.h"
+#include "vrui_window.h"
 
 static vrui_window* WindowRegPtr = NULL;
 static int WindowRegSize = 0;
@@ -22,7 +23,7 @@ static int WindowRegAlloc = 0;
 void vrui_window_grow(int Size){
 	if (Size > WindowRegAlloc) {
 		int NewTargetSize = WindowRegAlloc * 2;
-		WindowRegPtr = realloc(WindowRegPtr, NewTargetSize * sizeof(vrui_window));
+		WindowRegPtr = vrui_realloc(WindowRegPtr, NewTargetSize * sizeof(vrui_window));
 
 	}
 
