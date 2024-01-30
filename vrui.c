@@ -16,9 +16,13 @@
 #include "vrui.h"
 #include "string.h"
 #include "vrui_window.h"
+#include "stdlib.h"
 
 static void (*ConsoleCallback)(const char*) = NULL;
 static bool IsConsoleVerbose = true;
+static void* (*MallocCallback)(size_t) = NULL;
+static void* (*ReallocCallback)(void*, size_t) = NULL;
+static void (*FreeCallback)(void*);
 
 void vrui_log(const char* Str){
 	if (ConsoleCallback != NULL) {
@@ -41,6 +45,33 @@ void vrui_log_verbose(const char* Str) {
 
 void vrui_set_console_state(bool Verbose) {
 	IsConsoleVerbose = Verbose;
+
+}
+
+void* vrui_alloc(size_t Size) {
+	if (MallocCallback == NULL) {
+		return malloc(Size);
+
+	}
+	return MallocCallback(Size);
+
+}
+
+void* vrui_realloc(void* Ptr, size_t Size) {
+	if (ReallocCallback == NULL) {
+		return realloc(Ptr, Size);
+
+	}
+	return ReallocCallback(Ptr, Size);
+
+}
+
+void vrui_free(void* Ptr) {
+	if (FreeCallback == NULL) {
+		return free(Ptr);
+
+	}
+	return FreeCallback(Ptr);
 
 }
 

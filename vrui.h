@@ -73,6 +73,9 @@ extern "c" {
 //    internal funcs
 	void vrui_log(const char* Str);
 	void vrui_log_verbose(const char* Str);
+	void* vrui_alloc(size_t Size);
+	void* vrui_realloc(void* Ptr, size_t Size);
+	void vrui_free(void* Ptr);
 
 //    Pre init
 	VRUI_API void vrui_setup_console_callback(void (*FuncPtr)(const char*));
