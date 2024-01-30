@@ -12,8 +12,22 @@
 //
 ////////////////////////////////////////////////////////////////////////////
 
+#include "../vrui.h"
+#include "stdio.h"
+
+void vrui_log_impl(const char* Log){
+	printf("%s\n", Log);
+
+}
+
 int main(int argc, char* argv[]){
-	
+	vrui_gfx_init_struct InitGfx;
+	InitGfx = NULL;
+
+	vrui_init_struct InitStruct;
+	InitStruct.Gfx = InitGfx;
+
+	vrui_init(InitStruct);
 
 	return 0;
 
