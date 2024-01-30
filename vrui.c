@@ -53,6 +53,6 @@ int vrui_init(vrui_init_struct Info){
 }
 
 void vrui_setup_console_callback(void (*FuncPtr)(const char*)) {
-
+	ConsoleCallback = FuncPtr;
 
 }
