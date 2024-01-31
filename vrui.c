@@ -19,6 +19,7 @@
 #include "stdlib.h"
 
 int vrui_frame_count = 0;
+int vrui_steady_count = 0;
 
 static void (*ConsoleCallback)(const char*) = NULL;
 static bool IsConsoleVerbose = true;
