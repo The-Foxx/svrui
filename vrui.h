@@ -70,8 +70,9 @@ extern "c" {
 
 #define VRUI_MAX_MUTEX_DURATION 2000
 
-	VRUI_API extern int vrui_frame_count;
-	VRUI_API extern int vrui_steady_count;
+	extern int vrui_frame_count;
+	extern int vrui_steady_count;
+	extern vrui_window* vrui_implicit_window;
 
 //    internal funcs
 	void vrui_log(const char* Str);
@@ -90,6 +91,7 @@ extern "c" {
 	VRUI_API void vrui_window_debug_dump_console(vrui_window* Window);
 //    Update
 	VRUI_API void vrui_update();
+	VRUI_API vrui_window* vrui_get_implicit_window();
 
 //        LIB STATE
 	VRUI_API void vrui_set_global_offset(float X, float Y, float Z);

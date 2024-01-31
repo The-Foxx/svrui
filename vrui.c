@@ -20,6 +20,7 @@
 
 int vrui_frame_count = 0;
 int vrui_steady_count = 0;
+vrui_window* vrui_implicit_window = NULL;
 
 static void (*ConsoleCallback)(const char*) = NULL;
 static bool IsConsoleVerbose = true;
@@ -124,5 +125,10 @@ void vrui_window_debug_dump_console(vrui_window* Window) {
 
 void vrui_update() {
 	vrui_window_render();
+
+}
+
+vrui_window* vrui_get_implicit_window() {
+	return vrui_implicit_window;
 
 }
