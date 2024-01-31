@@ -18,6 +18,8 @@
 #include "vrui_window.h"
 #include "stdlib.h"
 
+int vrui_frame_count = 0;
+
 static void (*ConsoleCallback)(const char*) = NULL;
 static bool IsConsoleVerbose = true;
 static void* (*MallocCallback)(size_t) = NULL;

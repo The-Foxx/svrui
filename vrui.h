@@ -70,6 +70,8 @@ extern "c" {
 
 #define VRUI_MAX_MUTEX_DURATION 2000
 
+	VRUI_API extern int vrui_frame_count;
+
 //    internal funcs
 	void vrui_log(const char* Str);
 	void vrui_log_verbose(const char* Str);
