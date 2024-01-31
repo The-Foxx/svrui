@@ -64,6 +64,13 @@ typedef struct {
 
 typedef struct {
 
+
+} vrui_layout;
+
+typedef struct {
+//    Update Data
+	int DeltaTime;
+
 //    Rendering data
 	vrui_transform Pos;
 	void* DataPtr;
