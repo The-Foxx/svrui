@@ -120,3 +120,8 @@ void vrui_window_debug_dump_console(vrui_window* Window) {
 	}
 
 }
+
+void vrui_update() {
+	vrui_window_render();
+
+}

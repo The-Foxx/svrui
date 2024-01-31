@@ -57,6 +57,8 @@ typedef struct {
 
 typedef struct {
 	void* CurrWindow;
+	void* UserData;
+	vrui_mutex UserMutex;
 
 } vrui_onrender_info;
 

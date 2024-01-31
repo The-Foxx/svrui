@@ -94,3 +94,20 @@ void vrui_new_window_init(vrui_window* Window) {
 	}
 
 }
+
+void vrui_window_render() {
+
+
+	for (int i = 0; i < WindowRegSize; i++) {
+		vrui_window* Win = WindowRegPtr + i;
+
+		vrui_onrender_info RenderInfo;
+		RenderInfo.CurrWindow = (void*)Win;
+		RenderInfo.UserData = Win->DataPtr;
+		RenderInfo.UserMutex = Win->UserMutex;
+
+		Win->FuncPtr(RenderInfo);
+
+	}
+
+}
