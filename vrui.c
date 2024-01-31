@@ -26,7 +26,7 @@ static void (*ConsoleCallback)(const char*) = NULL;
 static bool IsConsoleVerbose = true;
 static void* (*MallocCallback)(size_t) = NULL;
 static void* (*ReallocCallback)(void*, size_t) = NULL;
-static void (*FreeCallback)(void*);
+static void (*FreeCallback)(void*) = NULL;
 
 void vrui_log(const char* Str){
 	if (ConsoleCallback != NULL) {
