@@ -73,6 +73,7 @@ extern "c" {
 	extern int vrui_frame_count;
 	extern int vrui_steady_count;
 	extern vrui_window* vrui_implicit_window;
+	extern float vrui_global_scale;
 
 //    internal funcs
 	void vrui_log(const char* Str);
@@ -95,6 +96,7 @@ extern "c" {
 
 //        LIB STATE
 	VRUI_API void vrui_set_global_offset(float X, float Y, float Z);
+	VRUI_API void vrui_set_global_scale(float Rhs);
 	VRUI_API bool vrui_scry();
 	VRUI_API void vrui_set_scry();
 

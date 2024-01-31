@@ -21,6 +21,7 @@
 int vrui_frame_count = 0;
 int vrui_steady_count = 0;
 vrui_window* vrui_implicit_window = NULL;
+float vrui_global_scale = 1.00f;
 
 static void (*ConsoleCallback)(const char*) = NULL;
 static bool IsConsoleVerbose = true;
@@ -130,5 +131,10 @@ void vrui_update() {
 
 vrui_window* vrui_get_implicit_window() {
 	return vrui_implicit_window;
+
+}
+
+void vrui_set_global_scale(float Rhs) {
+	return vrui_global_scale;
 
 }
