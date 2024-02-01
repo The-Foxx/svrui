@@ -135,6 +135,6 @@ vrui_window* vrui_get_implicit_window() {
 }
 
 void vrui_set_global_scale(float Rhs) {
-	return vrui_global_scale;
+	vrui_global_scale = Rhs;
 
 }
