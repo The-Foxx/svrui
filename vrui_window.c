@@ -31,8 +31,8 @@ void vrui_window_grow(int Size){
 }
 
 void vrui_window_init() {
-	WindowRegPtr = vrui_alloc(sizeof(vrui_window) * 16);
-	WindowRegAlloc = 16;
+	WindowRegPtr = vrui_alloc(sizeof(vrui_window) * 32);
+	WindowRegAlloc = 32;
 
 	return;
 

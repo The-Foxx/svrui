@@ -65,14 +65,28 @@ typedef struct {
 typedef struct {
 
 
+//    Data that needs to be cleared every start
+	float NextPosX, NextPosY, NextPosZ;
+
+//    Scrolling
+	float ScrollX, ScrollY, ScrollZ;
+
 } vrui_layout;
 
 typedef struct {
 //    Update Data
 	int DeltaTime;
 
+//    Layout rendering
+	vrui_layout RootLayour;
+	vrui_layout* SubLayout;
+	int SubLayoutSize;
+	int SubLayoutAlloc;
+
 //    Rendering data
 	vrui_transform Pos;
+
+//    User data
 	void* DataPtr;
 	vrui_mutex UserMutex;
 	void (*FuncPtr)(vrui_onrender_info Onrenderinfo);
