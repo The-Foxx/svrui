@@ -16,8 +16,8 @@
 		<CancelBuild></CancelBuild>
 		<RunCommand></RunCommand>
 		<RunCommandWorkingDirectory></RunCommandWorkingDirectory>
-		<DebugCommand></DebugCommand>
-		<ExePathCommand></ExePathCommand>
+		<DebugCommand>svrui_test.exe</DebugCommand>
+		<ExePathCommand>$(RootWorkspaceDirectory)/build</ExePathCommand>
 		<DebugSln></DebugSln>
 		<UseVisualStudioEnvBat>false</UseVisualStudioEnvBat>
 		<Configurations>
