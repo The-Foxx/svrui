@@ -60,6 +60,7 @@ vrui_window* vrui_new_window(vrui_job InJob, const char* Name) {
 	Result->UserMutex = InJob.Mutex;
 	memset(&Result->Name[0], 0, 512);
 	strcpy(&Result->Name[0], Name);
+	vrui_init_mutex(Result->UserMutex);
 	vrui_new_window_init(Result);
 
 	WindowRegSize++;
