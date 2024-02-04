@@ -132,4 +132,20 @@ typedef struct {
 
 } vrui_job;
 
+typedef struct {
+	char Letter;
+	vrui_uva TexCord;
+	float XOffset;
+	float YOffset;
+	float YSize;
+
+} vrui_letter;
+
+typedef struct {
+	vrui_letter* LetterArray;
+	int LetterArraySize;
+	vrui_tex AtlasTexture;
+
+} vrui_font;
+
 #endif
