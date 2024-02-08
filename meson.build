@@ -52,14 +52,14 @@ c_args : vrui_cargs)
 
 subdir('example')
 
-cc = meson.get_compiler('c')
-openvr_lib_path = meson.source_root() + '/example'
-openvr = cc.find_library('openvr_api', dirs : [openvr_lib_path])
+#cc = meson.get_compiler('c')
+#openvr_lib_path = meson.source_root() + '/example'
+#openvr = cc.find_library('openvr_api', dirs : [openvr_lib_path])
 
 opengl = dependency('gl')
 
-openvr_copy = fs.copyfile(meson.source_root() + '/example/openvr_api.dll')
-openvrpdb_copy = fs.copyfile(meson.source_root() + '/example/openvr_api.pdb')
-example = executable('svrui_example', example_files, link_with : vrui, dependencies : [openvr, opengl])
+#openvr_copy = fs.copyfile(meson.source_root() + '/example/openvr_api.dll')
+#openvrpdb_copy = fs.copyfile(meson.source_root() + '/example/openvr_api.pdb')
+#example = executable('svrui_example', example_files, link_with : vrui, dependencies : [openvr, opengl])
 
 iter = executable('svrui_test', iter_files, link_with : vrui)
