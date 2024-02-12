@@ -12,7 +12,11 @@
 #/
 #///////////////////////////////////////////////////////////////////////////
 
+if get_option('solver_present') != true
 project('svrui', 'c')
+
+endif
+
 fs = import('fs')
 
 vrui_files = files(
@@ -35,6 +39,7 @@ vrui_files += files('vrui_pal_linux.c')
 endif
 
 if build_machine.system() == 'windows'
+#vrui_files += files('vrui_pal_linux.c') # temp hack just to get mingw to build the library
 vrui_files += files('vrui_pal_win32.c')
 
 endif
@@ -51,15 +56,5 @@ vrui = shared_library('svrui', vrui_files,
 c_args : vrui_cargs)
 
 subdir('example')
-
-#cc = meson.get_compiler('c')
-#openvr_lib_path = meson.source_root() + '/example'
-#openvr = cc.find_library('openvr_api', dirs : [openvr_lib_path])
-
-opengl = dependency('gl')
-
-#openvr_copy = fs.copyfile(meson.source_root() + '/example/openvr_api.dll')
-#openvrpdb_copy = fs.copyfile(meson.source_root() + '/example/openvr_api.pdb')
-#example = executable('svrui_example', example_files, link_with : vrui, dependencies : [openvr, opengl])
 
 iter = executable('svrui_test', iter_files, link_with : vrui)
