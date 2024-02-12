@@ -12,10 +12,18 @@
 //
 ////////////////////////////////////////////////////////////////////////////
 
+#define NO_PAL_PROTOTYPES
 #define VRUI_IMPL
 #include "vrui.h"
 #include "vrui_window.h"
 #include <string.h>
+
+//frw
+void vrui_init_mutex(vrui_mutex Mutex);
+void vrui_destroy_mutex(vrui_mutex Mutex);
+void vrui_lock_mutex(vrui_mutex Mutex);
+void vrui_unlock_mutex(vrui_mutex Mutex);
+int vrui_system_time();
 
 static vrui_window* WindowRegPtr = NULL;
 static int WindowRegSize = 0;

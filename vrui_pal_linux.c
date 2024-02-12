@@ -16,22 +16,33 @@
 #include "vrui_pal.h"
 #include "pthread.h"
 
+//Temporary
+#define VRUI_NO_MUTEX
+
 void vrui_init_mutex(vrui_mutex Mutex){
-	int Result = pthread_mutex_init(Mutex, NULL);
+#ifndef VRUI_NO_MUTEX
+	int Result = pthread_mutex_init(&Mutex.Mutex, NULL);
+#endif
 
 }
 
 void vrui_destroy_mutex(vrui_mutex Mutex) {
-	int Result = pthread_mutex_destroy(Mutex);
+#ifndef VRUI_NO_MUTEX
+	int Result = pthread_mutex_destroy(&Mutex.Mutex);
+#endif
 
 }
 
 void vrui_lock_mutex(vrui_mutex Mutex) {
-	int Result = pthread_mutex_lock(Mutex);
+#ifndef VRUI_NO_MUTEX
+	int Result = pthread_mutex_lock(&Mutex.Mutex);
+#endif
 
 }
 
 void vrui_unlock_mutex(vrui_mutex Mutex) {
-	int Result = pthread_mutex_unlock(Mutex);
+#ifndef VRUI_NO_MUTEX
+	int Result = pthread_mutex_unlock(&Mutex.Mutex);
+#endif
 
 }

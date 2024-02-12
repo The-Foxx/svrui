@@ -58,10 +58,13 @@ typedef struct{
 
 } vrui_mutex;
 
+#ifndef NO_PAL_PROTOTYPES
 PAL_API void vrui_init_mutex(vrui_mutex Mutex);
 PAL_API void vrui_destroy_mutex(vrui_mutex Mutex);
 PAL_API void vrui_lock_mutex(vrui_mutex Mutex);
 PAL_API void vrui_unlock_mutex(vrui_mutex Mutex);
 PAL_API int vrui_system_time();
+
+#endif
 
 #endif
