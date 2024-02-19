@@ -58,3 +58,15 @@ c_args : vrui_cargs)
 subdir('example')
 
 iter = executable('svrui_test', iter_files, link_with : vrui)
+
+cc = meson.get_compiler('c')
+
+glfw = declare_dependency(
+  dependencies : cc.find_library('glfw3', dirs : [meson.current_source_dir() + '/lib/glfw']),
+  include_directories : include_directories('.'),
+)
+
+openGLDep = dependency('gl')
+
+ogl = executable('svrui_ogl_test', ogl_files, link_with : vrui, dependencies : [glfw, openGLDep],
+include_directories : ['lib/ogl/api'])

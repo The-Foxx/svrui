@@ -14,3 +14,4 @@
 
 example_files = files('vrui_hello_world.c')
 iter_files = files('vrui_iter.c')
+ogl_files = files('vrui_ogl_test.c')
