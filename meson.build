@@ -12,10 +12,10 @@
 #/
 #///////////////////////////////////////////////////////////////////////////
 
-if get_option('solver_present') != true
+#if get_option('solver_present') != true
 project('svrui', 'c')
 
-endif
+#endif
 
 fs = import('fs')
 
