@@ -120,7 +120,7 @@ typedef struct {
 } vrui_uva;
 
 typedef struct {
-//    TODO(clara): Implement texture handle !!!
+	int Index;
 
 } vrui_tex;
 
@@ -133,17 +133,18 @@ typedef struct {
 } vrui_job;
 
 typedef struct {
-	char Letter;
+	unsigned int Letter;
 	vrui_uva TexCord;
 	float XOffset;
 	float YOffset;
 	float YSize;
 
-} vrui_letter;
+} vrui_glyph;
 
 typedef struct {
-	vrui_letter* LetterArray;
+	vrui_glyph* LetterArray;
 	int LetterArraySize;
+	int LetterAllocSize;
 	vrui_tex AtlasTexture;
 
 } vrui_font;
