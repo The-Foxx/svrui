@@ -55,6 +55,8 @@ endif
 vrui = shared_library('svrui', vrui_files,
 c_args : vrui_cargs)
 
+vrui_static = static_library('svrui_static', vrui_files)
+
 subdir('example')
 
 iter = executable('svrui_test', iter_files, link_with : vrui)
@@ -68,5 +70,8 @@ glfw = declare_dependency(
 
 openGLDep = dependency('gl')
 
-ogl = executable('svrui_ogl_test', ogl_files, link_with : vrui, dependencies : [glfw, openGLDep],
-include_directories : ['lib/ogl/api'])
+ogl = executable('svrui_ogl_test', ogl_files, link_with : vrui, dependencies : [glfw, openGLDep])
+
+subdir('overlay_reference')
+overlay_ref = executable('svrui_overlay', overlay_ref_files, link_with : vrui_static, dependencies : [glfw],
+include_directories : ['overlay_reference/lib/vulkan_api/include'])
