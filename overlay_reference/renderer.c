@@ -22,6 +22,7 @@
 
 #define EXTENSION_COUNT 16
 #define VK_DEBUG_HELPER
+#define USE_BIND_MEMORY_2
 
 static VkInstance Instance;
 static VkPhysicalDevice PhysDevice;
@@ -200,6 +201,14 @@ void init_renderer(){
 		unsigned int WantedDeviceExtensionCount = 0;
 		char WantedDeviceExtensionArr[16][VK_MAX_EXTENSION_NAME_SIZE];
 
+		#ifdef USE_BIND_MEMORY_2
+		strcpy(&WantedDeviceExtensionArr[WantedDeviceExtensionCount][0], "VK_KHR_bind_memory2");
+		WantedDeviceExtensionCount++;
+
+		#endif
+
+		strcpy(&WantedDeviceExtensionArr[WantedDeviceExtensionCount][0], "VK_KHR_synchronization2");
+		WantedDeviceExtensionCount++;
 
 		unsigned int DeviceQueueCount;
 		vkGetPhysicalDeviceQueueFamilyProperties(PhysDevice, &DeviceQueueCount, NULL);
@@ -249,7 +258,16 @@ void init_renderer(){
 
 		}
 		CreateInfo.ppEnabledLayerNames = (const char* const*)LayerPtr;
-		//CreateInfo.enabledExtensionCount = 
+		CreateInfo.enabledExtensionCount = WantedDeviceExtensionCount;
+		
+		char* ExtensionPtr[WantedDeviceExtensionCount];
+		for (int i = 0; i < WantedDeviceExtensionCount; i++) {
+			ExtensionPtr[i] = WantedDeviceExtensionArr[i];
+
+		}
+
+		CreateInfo.ppEnabledExtensionNames = (const char* const*)ExtensionPtr;
+		CreateInfo.pEnabledFeatures = NULL;
 
 		VkResult CreateDeviceResult = vkCreateDevice(PhysDevice, (const VkDeviceCreateInfo*)&CreateInfo, NULL, &Device);
 		printf("Device creation result %i", CreateDeviceResult);
