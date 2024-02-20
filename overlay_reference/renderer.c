@@ -26,6 +26,8 @@
 static VkInstance Instance;
 static VkPhysicalDevice PhysDevice;
 static VkDevice Device;
+static VkQueue GraphicsQueue;
+static float GraphicsQueuePriority = 1.0f;
 
 void renderer_device_type_to_string(VkPhysicalDeviceType Type, char* Str) {
 	switch (Type) {
@@ -195,13 +197,59 @@ void init_renderer(){
 
 		}
 
+		unsigned int WantedDeviceExtensionCount = 0;
+		char WantedDeviceExtensionArr[16][VK_MAX_EXTENSION_NAME_SIZE];
+
+
+		unsigned int DeviceQueueCount;
+		vkGetPhysicalDeviceQueueFamilyProperties(PhysDevice, &DeviceQueueCount, NULL);
+		printf("Number of queues %u\n", DeviceQueueCount);
+		VkQueueFamilyProperties QueueFamilyArr[DeviceQueueCount + 1];
+		vkGetPhysicalDeviceQueueFamilyProperties(PhysDevice, &DeviceQueueCount, &QueueFamilyArr[0]);
+
+		unsigned int WantedQueueIndex = 0;
+		bool WantedQueue = false;
+		for (int i = 0; i < DeviceQueueCount; i++) {
+			printf("    Index: %i, Count: %u, Flags: %x, MinImageGranularity W%u H%u D%u\n",
+			       i, QueueFamilyArr[i].queueCount, QueueFamilyArr[i].queueFlags, QueueFamilyArr[i].minImageTransferGranularity.width,
+			       QueueFamilyArr[i].minImageTransferGranularity.height, QueueFamilyArr[i].minImageTransferGranularity.depth);
+
+			if (!WantedQueue) {
+				if (QueueFamilyArr[i].queueFlags & VK_QUEUE_GRAPHICS_BIT) {
+					WantedQueue = true;
+					WantedQueueIndex = i;
+					printf("      Chose queue number %u\n", WantedQueueIndex);
+
+				}
+
+			}
+
+		}
+
+		VkDeviceQueueCreateInfo GraphQueueInfo;
+		GraphQueueInfo.sType = VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO;
+		GraphQueueInfo.pNext = NULL;
+		GraphQueueInfo.flags = 0;
+		GraphQueueInfo.queueFamilyIndex = 0;
+		GraphQueueInfo.queueCount = 1;
+		GraphQueueInfo.pQueuePriorities = &GraphicsQueuePriority;
+
+
 		VkDeviceCreateInfo CreateInfo;
 		CreateInfo.sType = VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO;
 		CreateInfo.pNext = NULL;
 		CreateInfo.flags = 0;
-		//CreateInfo.queueCreateInfoCount
-		//CreateInfo.pQueueCreateInfos
+		CreateInfo.queueCreateInfoCount = 1;
+		CreateInfo.pQueueCreateInfos = &GraphQueueInfo;
 		CreateInfo.enabledLayerCount = WantedDeviceLayersCount;
+		
+		char* LayerPtr[WantedDeviceLayersCount + 1];
+		for (int i = 0; i < WantedDeviceLayersCount; i++) {
+			LayerPtr[i] = WantedDeviceLayersArray[i];
+
+		}
+		CreateInfo.ppEnabledLayerNames = (const char* const*)LayerPtr;
+		//CreateInfo.enabledExtensionCount = 
 
 		VkResult CreateDeviceResult = vkCreateDevice(PhysDevice, (const VkDeviceCreateInfo*)&CreateInfo, NULL, &Device);
 		printf("Device creation result %i", CreateDeviceResult);
@@ -209,5 +257,3 @@ void init_renderer(){
 	}
 
 }
-
-
