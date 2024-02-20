@@ -72,6 +72,13 @@ openGLDep = dependency('gl')
 
 ogl = executable('svrui_ogl_test', ogl_files, link_with : vrui, dependencies : [glfw, openGLDep])
 
+openvr = declare_dependency(
+dependencies : cc.find_library('openvr_api', dirs : [meson.current_source_dir() + '/overlay_reference/lib/openvr/lib/win64']),
+  include_directories : include_directories('.'),
+)
+
+openvr_rtdep = fs.copyfile('overlay_reference/lib/openvr/bin/win64/openvr_api.dll')
+
 subdir('overlay_reference')
-overlay_ref = executable('svrui_overlay', overlay_ref_files, link_with : vrui_static, dependencies : [glfw],
+overlay_ref = executable('svrui_overlay', overlay_ref_files, link_with : vrui_static, dependencies : [glfw, openvr],
 include_directories : ['overlay_reference/lib/vulkan_api/include'])
