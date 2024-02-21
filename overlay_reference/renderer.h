@@ -17,8 +17,10 @@
 
 #ifndef _RENDERER_H_
 #define _RENDERER_H_
-void init_renderer();
-void renderer_loop();
 void renderer_device_type_to_string(VkPhysicalDeviceType Type, char* Str);
+void* renderer_get_ovr_interface(const char* InName);
+void init_renderer();
+void renderer_quit();
+void renderer_loop();
 
 #endif

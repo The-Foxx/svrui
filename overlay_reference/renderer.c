@@ -24,6 +24,8 @@
 #include "string.h"
 #include "stdio.h"
 #include "stdbool.h"
+#include "overlay_input.h"
+#include "stdlib.h"
 
 #define EXTENSION_COUNT 16
 #define VK_DEBUG_HELPER
@@ -38,11 +40,18 @@ bool VR_IsRuntimeInstalled();
 const char * VR_GetVRInitErrorAsSymbol( EVRInitError error );
 const char * VR_GetVRInitErrorAsEnglishDescription( EVRInitError error );
 
+
 static VkInstance Instance;
 static VkPhysicalDevice PhysDevice;
 static VkDevice Device;
-static VkQueue GraphicsQueue;
 static float GraphicsQueuePriority = 1.0f;
+static VkQueue GraphicsQueue;
+static VROverlayHandle_t OverlayHandle;
+
+// VR
+struct VR_IVROverlay_FnTable* IVROverlay;
+struct VR_IVRSystem_FnTable* IVRSys;
+struct VR_IVRCompositor_FnTable* IVRComp;
 
 void renderer_device_type_to_string(VkPhysicalDeviceType Type, char* Str) {
 	switch (Type) {
@@ -70,13 +79,39 @@ void renderer_device_type_to_string(VkPhysicalDeviceType Type, char* Str) {
 
 }
 
+void* renderer_get_ovr_interface(const char* InName) {
+	EVRInitError Error;
+	char InterfaceName[256];
+	snprintf(InterfaceName, 256, "FnTable:%s", InName);
+	void* Result = (void*)VR_GetGenericInterface(&InterfaceName[0], &Error);
+	printf("Gathering %s with error code %i\n", InName, Error);
+	if (Result == NULL) {
+		printf("Failed to gather interface %s, openvr returned a null pointer\n", InName);
+		exit(1);
+
+	}
+	return Result;
+
+}
+
 void init_renderer(){
 
 //    Vr setup
 	{
-		EVRInitError VrError;
+		EVRInitError VrError = 0;
 		VR_InitInternal(&VrError, EVRApplicationType_VRApplication_Overlay);
 		printf("Initialized openvr with error code %u\n", VrError);
+		printf("IsHmdPresent: %i\n", VR_IsHmdPresent());
+
+		IVRSys = renderer_get_ovr_interface(IVRSystem_Version);
+		IVRComp = renderer_get_ovr_interface(IVRCompositor_Version);
+		IVROverlay = renderer_get_ovr_interface(IVROverlay_Version);
+
+	}
+
+//    Vr overlay setup
+	{
+		IVROverlay->CreateOverlay(VRUI_OVERLAY_KEY, VRUI_OVERLAY_NAME, &OverlayHandle);
 
 	}
 
@@ -293,9 +328,14 @@ void init_renderer(){
 		CreateInfo.pEnabledFeatures = NULL;
 
 		VkResult CreateDeviceResult = vkCreateDevice(PhysDevice, (const VkDeviceCreateInfo*)&CreateInfo, NULL, &Device);
-		printf("Device creation result %i", CreateDeviceResult);
+		printf("Device creation result %i\n", CreateDeviceResult);
 
 	}
+
+}
+
+void renderer_quit() {
+	VR_ShutdownInternal();
 
 }
 
