@@ -12,6 +12,11 @@
 //
 ////////////////////////////////////////////////////////////////////////////
 
+#ifdef __GNUC__
+#pragma GCC diagnostic ignored "-Wunused-variable"
+#endif
+#include "openvr_capi.h"
+
 #include "renderer.h"
 #define VK_NO_PROTOTYPES
 #include "vulkan/vulkan.h"
@@ -23,6 +28,15 @@
 #define EXTENSION_COUNT 16
 #define VK_DEBUG_HELPER
 #define USE_BIND_MEMORY_2
+
+// Openvr frw
+intptr_t VR_InitInternal( EVRInitError *peError, EVRApplicationType eType );
+void VR_ShutdownInternal();
+bool VR_IsHmdPresent();
+intptr_t VR_GetGenericInterface( const char *pchInterfaceVersion, EVRInitError *peError );
+bool VR_IsRuntimeInstalled();
+const char * VR_GetVRInitErrorAsSymbol( EVRInitError error );
+const char * VR_GetVRInitErrorAsEnglishDescription( EVRInitError error );
 
 static VkInstance Instance;
 static VkPhysicalDevice PhysDevice;
@@ -50,12 +64,21 @@ void renderer_device_type_to_string(VkPhysicalDeviceType Type, char* Str) {
 
 		default:
 			strcpy(Str, "\"Unknown physical device type in to string\"");
+			break;
 
 	}
 
 }
 
 void init_renderer(){
+
+//    Vr setup
+	{
+		EVRInitError VrError;
+		VR_InitInternal(&VrError, EVRApplicationType_VRApplication_Overlay);
+		printf("Initialized openvr with error code %u\n", VrError);
+
+	}
 
 //    Create instance
 	{
@@ -273,5 +296,10 @@ void init_renderer(){
 		printf("Device creation result %i", CreateDeviceResult);
 
 	}
+
+}
+
+void renderer_loop() {
+
 
 }

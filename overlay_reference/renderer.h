@@ -18,6 +18,7 @@
 #ifndef _RENDERER_H_
 #define _RENDERER_H_
 void init_renderer();
+void renderer_loop();
 void renderer_device_type_to_string(VkPhysicalDeviceType Type, char* Str);
 
 #endif
