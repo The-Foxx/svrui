@@ -81,4 +81,4 @@ openvr_rtdep = fs.copyfile('overlay_reference/lib/openvr/bin/win64/openvr_api.dl
 
 subdir('overlay_reference')
 overlay_ref = executable('svrui_overlay', overlay_ref_files, link_with : vrui_static, dependencies : [glfw, openvr],
-include_directories : ['overlay_reference/lib/vulkan_api/include'])
+include_directories : ['overlay_reference/lib/vulkan_api/include', 'overlay_reference/lib/openvr/headers'])
