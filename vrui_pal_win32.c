@@ -18,45 +18,45 @@
 #include "windows.h"
 
 void vrui_init_mutex(vrui_mutex Mutex){
-	Mutex.Mutex = CreateMutex(NULL, FALSE, NULL);
+    Mutex.Mutex = CreateMutex(NULL, FALSE, NULL);
 
-	if (Mutex.Mutex == NULL) {
-		VRCNF("[ERROR] Could not create mutex");
+    if (Mutex.Mutex == NULL) {
+        VRCNF("[ERROR] Could not create mutex");
 
-	}
+    }
 
 }
 
 void vrui_destroy_mutex(vrui_mutex Mutex) {
-	CloseHandle(Mutex.Mutex);
+    CloseHandle(Mutex.Mutex);
 
 }
 
 void vrui_lock_mutex(vrui_mutex Mutex) {
-	DWORD Result = WaitForSingleObject(Mutex.Mutex, VRUI_MAX_MUTEX_DURATION);
+    DWORD Result = WaitForSingleObject(Mutex.Mutex, VRUI_MAX_MUTEX_DURATION);
 
-	if (Result == 0x00000080L) {
-		VRCNF("Mutex owning thread has being terminated without mutex unlock");
+    if (Result == 0x00000080L) {
+        VRCNF("Mutex owning thread has being terminated without mutex unlock");
 
-	}
+    }
 
-	if (Result == 0x00000102L) {
-		VRCNF("[ERROR] Mutex has reatched timeout");
+    if (Result == 0x00000102L) {
+        VRCNF("[ERROR] Mutex has reatched timeout");
 
-	}
+    }
 
-	if (Result == (DWORD)0xFFFFFFFF) {
-		VRCNF("[ERROR] Unknown mutex error");
+    if (Result == (DWORD)0xFFFFFFFF) {
+        VRCNF("[ERROR] Unknown mutex error");
 
-	}
+    }
 
 }
 
 void vrui_unlock_mutex(vrui_mutex Mutex) {
-	BOOL Result = ReleaseMutex(Mutex.Mutex);
-	if (Result == 0) {
-		VRCNF("[ERROR] Failed to unlock mutex");
+    BOOL Result = ReleaseMutex(Mutex.Mutex);
+    if (Result == 0) {
+        VRCNF("[ERROR] Failed to unlock mutex");
 
-	}
+    }
 
 }

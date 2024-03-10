@@ -4121,13 +4121,13 @@ namespace VULKAN_HPP_NAMESPACE
       case StructureType::ePhysicalDeviceExclusiveScissorFeaturesNV: return "PhysicalDeviceExclusiveScissorFeaturesNV";
       case StructureType::eCheckpointDataNV: return "CheckpointDataNV";
       case StructureType::eQueueFamilyCheckpointPropertiesNV: return "QueueFamilyCheckpointPropertiesNV";
-      case StructureType::ePhysicalDeviceShaderIntegerFunctions2FeaturesINTEL: return "PhysicalDeviceShaderIntegerFunctions2FeaturesINTEL";
-      case StructureType::eQueryPoolPerformanceQueryCreateInfoINTEL: return "QueryPoolPerformanceQueryCreateInfoINTEL";
-      case StructureType::eInitializePerformanceApiInfoINTEL: return "InitializePerformanceApiInfoINTEL";
-      case StructureType::ePerformanceMarkerInfoINTEL: return "PerformanceMarkerInfoINTEL";
-      case StructureType::ePerformanceStreamMarkerInfoINTEL: return "PerformanceStreamMarkerInfoINTEL";
-      case StructureType::ePerformanceOverrideInfoINTEL: return "PerformanceOverrideInfoINTEL";
-      case StructureType::ePerformanceConfigurationAcquireInfoINTEL: return "PerformanceConfigurationAcquireInfoINTEL";
+      case StructureType::ePhysicalDeviceShaderIntegerFunctions2FeaturesINTEL: return "PhysicalDeviceShaderIntegerFunctions2FeaturesINTEU";
+      case StructureType::eQueryPoolPerformanceQueryCreateInfoINTEL: return "QueryPoolPerformanceQueryCreateInfoINTEU";
+      case StructureType::eInitializePerformanceApiInfoINTEL: return "InitializePerformanceApiInfoINTEU";
+      case StructureType::ePerformanceMarkerInfoINTEL: return "PerformanceMarkerInfoINTEU";
+      case StructureType::ePerformanceStreamMarkerInfoINTEL: return "PerformanceStreamMarkerInfoINTEU";
+      case StructureType::ePerformanceOverrideInfoINTEL: return "PerformanceOverrideInfoINTEU";
+      case StructureType::ePerformanceConfigurationAcquireInfoINTEL: return "PerformanceConfigurationAcquireInfoINTEU";
       case StructureType::ePhysicalDevicePciBusInfoPropertiesEXT: return "PhysicalDevicePciBusInfoPropertiesEXT";
       case StructureType::eDisplayNativeHdrSurfaceCapabilitiesAMD: return "DisplayNativeHdrSurfaceCapabilitiesAMD";
       case StructureType::eSwapchainDisplayNativeHdrCreateInfoAMD: return "SwapchainDisplayNativeHdrCreateInfoAMD";
@@ -4609,7 +4609,7 @@ namespace VULKAN_HPP_NAMESPACE
       case ObjectType::eAccelerationStructureKHR: return "AccelerationStructureKHR";
       case ObjectType::eValidationCacheEXT: return "ValidationCacheEXT";
       case ObjectType::eAccelerationStructureNV: return "AccelerationStructureNV";
-      case ObjectType::ePerformanceConfigurationINTEL: return "PerformanceConfigurationINTEL";
+      case ObjectType::ePerformanceConfigurationINTEL: return "PerformanceConfigurationINTEU";
       case ObjectType::eDeferredOperationKHR: return "DeferredOperationKHR";
       case ObjectType::eIndirectCommandsLayoutNV: return "IndirectCommandsLayoutNV";
 #if defined( VK_ENABLE_BETA_EXTENSIONS )
@@ -5289,7 +5289,7 @@ namespace VULKAN_HPP_NAMESPACE
       case QueryType::eAccelerationStructureCompactedSizeKHR: return "AccelerationStructureCompactedSizeKHR";
       case QueryType::eAccelerationStructureSerializationSizeKHR: return "AccelerationStructureSerializationSizeKHR";
       case QueryType::eAccelerationStructureCompactedSizeNV: return "AccelerationStructureCompactedSizeNV";
-      case QueryType::ePerformanceQueryINTEL: return "PerformanceQueryINTEL";
+      case QueryType::ePerformanceQueryINTEL: return "PerformanceQueryINTEU";
       case QueryType::eVideoEncodeFeedbackKHR: return "VideoEncodeFeedbackKHR";
       case QueryType::eMeshPrimitivesGeneratedEXT: return "MeshPrimitivesGeneratedEXT";
       case QueryType::ePrimitivesGeneratedEXT: return "PrimitivesGeneratedEXT";

@@ -21,28 +21,28 @@
 
 void vrui_init_mutex(vrui_mutex Mutex){
 #ifndef VRUI_NO_MUTEX
-	int Result = pthread_mutex_init(&Mutex.Mutex, NULL);
+    int Result = pthread_mutex_init(&Mutex.Mutex, NULL);
 #endif
 
 }
 
 void vrui_destroy_mutex(vrui_mutex Mutex) {
 #ifndef VRUI_NO_MUTEX
-	int Result = pthread_mutex_destroy(&Mutex.Mutex);
+    int Result = pthread_mutex_destroy(&Mutex.Mutex);
 #endif
 
 }
 
 void vrui_lock_mutex(vrui_mutex Mutex) {
 #ifndef VRUI_NO_MUTEX
-	int Result = pthread_mutex_lock(&Mutex.Mutex);
+    int Result = pthread_mutex_lock(&Mutex.Mutex);
 #endif
 
 }
 
 void vrui_unlock_mutex(vrui_mutex Mutex) {
 #ifndef VRUI_NO_MUTEX
-	int Result = pthread_mutex_unlock(&Mutex.Mutex);
+    int Result = pthread_mutex_unlock(&Mutex.Mutex);
 #endif
 
 }

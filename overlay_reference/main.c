@@ -17,10 +17,10 @@
 #include "stdlib.h"
 
 int main(int argc, char* argv[]){
-	init_renderer();
+    init_renderer();
 
-	renderer_quit();
-	printf("Quitting...\n");
-	return 0;
+    renderer_quit();
+    printf("Quitting...\n");
+    return 0;
 
 }

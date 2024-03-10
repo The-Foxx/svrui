@@ -20,13 +20,13 @@
 #define _VRUI_BASE_H_
 
 typedef struct {
-	void (*OnGfxInit)();
-	void (*OnGfxDraw)();
+    void (*OnGfxInit)();
+    void (*OnGfxDraw)();
 
 } vrui_gfx_init_struct;
 
 typedef struct{
-	vrui_gfx_init_struct Gfx;
+    vrui_gfx_init_struct Gfx;
 
 } vrui_init_struct;
 
@@ -35,30 +35,30 @@ typedef struct {
 } vrui_st_gfx_func_struct;
 
 typedef struct {
-	float X, Y, Z;
-	float A, B, G;
+    float X, Y, Z;
+    float A, B, G;
 
 } vrui_rect;
 
 typedef struct {
-	float X0, Y0, Z0, W0;
-	float X1, Y1, Z1, W1;
-	float X2, Y2, Z2, W2;
-	float X3, Y3, Z3, W3;
+    float X0, Y0, Z0, W0;
+    float X1, Y1, Z1, W1;
+    float X2, Y2, Z2, W2;
+    float X3, Y3, Z3, W3;
 
 } vrui_transform;
 
 typedef struct {
-	float X, Y, Z;
-	float UVX, UVY;
-	float A;
+    float X, Y, Z;
+    float UVX, UVY;
+    float A;
 
 } vrui_vert;
 
 typedef struct {
-	void* CurrWindow;
-	void* UserData;
-	vrui_mutex UserMutex;
+    void* CurrWindow;
+    void* UserData;
+    vrui_mutex UserMutex;
 
 } vrui_onrender_info;
 
@@ -66,86 +66,86 @@ typedef struct {
 
 
 //    Data that needs to be cleared every start
-	float NextPosX, NextPosY, NextPosZ;
+    float NextPosX, NextPosY, NextPosZ;
 
 //    Scrolling
-	float ScrollX, ScrollY, ScrollZ;
+    float ScrollX, ScrollY, ScrollZ;
 
 } vrui_layout;
 
 typedef struct {
 //    Update Data
-	int DeltaTime;
+    int DeltaTime;
 
 //    Layout rendering
-	vrui_layout RootLayour;
-	vrui_layout* SubLayout;
-	int SubLayoutSize;
-	int SubLayoutAlloc;
+    vrui_layout RootLayour;
+    vrui_layout* SubLayout;
+    int SubLayoutSize;
+    int SubLayoutAlloc;
 
 //    Rendering data
-	vrui_transform Pos;
+    vrui_transform Pos;
 
 //    User data
-	void* DataPtr;
-	vrui_mutex UserMutex;
-	void (*FuncPtr)(vrui_onrender_info Onrenderinfo);
-	void (*SteadyPtr)(vrui_onrender_info Onrenderinfo);
+    void* DataPtr;
+    vrui_mutex UserMutex;
+    void (*FuncPtr)(vrui_onrender_info Onrenderinfo);
+    void (*SteadyPtr)(vrui_onrender_info Onrenderinfo);
 
 //    Cache line for rendering
-	vrui_vert* VertBuf;
-	int VertBufSize;
-	int VertBufAlloc;
-	vrui_vert* AlphaBuf;
-	int AlphaBufSize;
-	int AlphaBufAlloc;
-	int* AOrdBuf;
-	int AOrdBufSize;
-	int AOrdBufAlloc;
-	int* OrdBuf;
-	int OrdBufSize;
-	int OrdBufAlloc;
+    vrui_vert* VertBuf;
+    int VertBufSize;
+    int VertBufAlloc;
+    vrui_vert* AlphaBuf;
+    int AlphaBufSize;
+    int AlphaBufAlloc;
+    int* AOrdBuf;
+    int AOrdBufSize;
+    int AOrdBufAlloc;
+    int* OrdBuf;
+    int OrdBufSize;
+    int OrdBufAlloc;
 
 //    note(clara): This needs to be at the bottom for cache frienliness
 //        because its a big enouth array that we dont want to have to pull up
 //        two cache lines to get the window data for rendering and layout
-	char Name[512];
-	int NameSize;
+    char Name[512];
+    int NameSize;
 
 } vrui_window;
 
 typedef struct {
-	float X, Y, Z, W;
+    float X, Y, Z, W;
 
 } vrui_uva;
 
 typedef struct {
-	int Index;
+    int Index;
 
 } vrui_tex;
 
 typedef struct {
-	void* DataPtr;
-	vrui_mutex Mutex;
-	void (*FuncPtr)(vrui_onrender_info Onrenderinfo);
-	void (*SteadyPtr)(vrui_onrender_info Onrenderinfo);
+    void* DataPtr;
+    vrui_mutex Mutex;
+    void (*FuncPtr)(vrui_onrender_info Onrenderinfo);
+    void (*SteadyPtr)(vrui_onrender_info Onrenderinfo);
 
 } vrui_job;
 
 typedef struct {
-	unsigned int Letter;
-	vrui_uva TexCord;
-	float XOffset;
-	float YOffset;
-	float YSize;
+    unsigned int Letter;
+    vrui_uva TexCord;
+    float XOffset;
+    float YOffset;
+    float YSize;
 
 } vrui_glyph;
 
 typedef struct {
-	vrui_glyph* LetterArray;
-	int LetterArraySize;
-	int LetterAllocSize;
-	vrui_tex AtlasTexture;
+    vrui_glyph* LetterArray;
+    int LetterArraySize;
+    int LetterAllocSize;
+    vrui_tex AtlasTexture;
 
 } vrui_font;
 

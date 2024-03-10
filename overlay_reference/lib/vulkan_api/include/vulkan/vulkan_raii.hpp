@@ -1247,19 +1247,19 @@ namespace VULKAN_HPP_NAMESPACE
           vkSignalSemaphore = vkSignalSemaphoreKHR;
 
         //=== VK_INTEL_performance_query ===
-        vkInitializePerformanceApiINTEL   = PFN_vkInitializePerformanceApiINTEL( vkGetDeviceProcAddr( device, "vkInitializePerformanceApiINTEL" ) );
-        vkUninitializePerformanceApiINTEL = PFN_vkUninitializePerformanceApiINTEL( vkGetDeviceProcAddr( device, "vkUninitializePerformanceApiINTEL" ) );
-        vkCmdSetPerformanceMarkerINTEL    = PFN_vkCmdSetPerformanceMarkerINTEL( vkGetDeviceProcAddr( device, "vkCmdSetPerformanceMarkerINTEL" ) );
+        vkInitializePerformanceApiINTEL   = PFN_vkInitializePerformanceApiINTEL( vkGetDeviceProcAddr( device, "vkInitializePerformanceApiINTEU" ) );
+        vkUninitializePerformanceApiINTEL = PFN_vkUninitializePerformanceApiINTEL( vkGetDeviceProcAddr( device, "vkUninitializePerformanceApiINTEU" ) );
+        vkCmdSetPerformanceMarkerINTEL    = PFN_vkCmdSetPerformanceMarkerINTEL( vkGetDeviceProcAddr( device, "vkCmdSetPerformanceMarkerINTEU" ) );
         vkCmdSetPerformanceStreamMarkerINTEL =
-          PFN_vkCmdSetPerformanceStreamMarkerINTEL( vkGetDeviceProcAddr( device, "vkCmdSetPerformanceStreamMarkerINTEL" ) );
-        vkCmdSetPerformanceOverrideINTEL = PFN_vkCmdSetPerformanceOverrideINTEL( vkGetDeviceProcAddr( device, "vkCmdSetPerformanceOverrideINTEL" ) );
+          PFN_vkCmdSetPerformanceStreamMarkerINTEL( vkGetDeviceProcAddr( device, "vkCmdSetPerformanceStreamMarkerINTEU" ) );
+        vkCmdSetPerformanceOverrideINTEL = PFN_vkCmdSetPerformanceOverrideINTEL( vkGetDeviceProcAddr( device, "vkCmdSetPerformanceOverrideINTEU" ) );
         vkAcquirePerformanceConfigurationINTEL =
-          PFN_vkAcquirePerformanceConfigurationINTEL( vkGetDeviceProcAddr( device, "vkAcquirePerformanceConfigurationINTEL" ) );
+          PFN_vkAcquirePerformanceConfigurationINTEL( vkGetDeviceProcAddr( device, "vkAcquirePerformanceConfigurationINTEU" ) );
         vkReleasePerformanceConfigurationINTEL =
-          PFN_vkReleasePerformanceConfigurationINTEL( vkGetDeviceProcAddr( device, "vkReleasePerformanceConfigurationINTEL" ) );
+          PFN_vkReleasePerformanceConfigurationINTEL( vkGetDeviceProcAddr( device, "vkReleasePerformanceConfigurationINTEU" ) );
         vkQueueSetPerformanceConfigurationINTEL =
-          PFN_vkQueueSetPerformanceConfigurationINTEL( vkGetDeviceProcAddr( device, "vkQueueSetPerformanceConfigurationINTEL" ) );
-        vkGetPerformanceParameterINTEL = PFN_vkGetPerformanceParameterINTEL( vkGetDeviceProcAddr( device, "vkGetPerformanceParameterINTEL" ) );
+          PFN_vkQueueSetPerformanceConfigurationINTEL( vkGetDeviceProcAddr( device, "vkQueueSetPerformanceConfigurationINTEU" ) );
+        vkGetPerformanceParameterINTEL = PFN_vkGetPerformanceParameterINTEL( vkGetDeviceProcAddr( device, "vkGetPerformanceParameterINTEU" ) );
 
         //=== VK_AMD_display_native_hdr ===
         vkSetLocalDimmingAMD = PFN_vkSetLocalDimmingAMD( vkGetDeviceProcAddr( device, "vkSetLocalDimmingAMD" ) );
@@ -19344,7 +19344,7 @@ namespace VULKAN_HPP_NAMESPACE
 
       VULKAN_HPP_NAMESPACE::Result result = static_cast<VULKAN_HPP_NAMESPACE::Result>( getDispatcher()->vkInitializePerformanceApiINTEL(
         static_cast<VkDevice>( m_device ), reinterpret_cast<const VkInitializePerformanceApiInfoINTEL *>( &initializeInfo ) ) );
-      resultCheck( result, VULKAN_HPP_NAMESPACE_STRING "::Device::initializePerformanceApiINTEL" );
+      resultCheck( result, VULKAN_HPP_NAMESPACE_STRING "::Device::initializePerformanceApiINTEU" );
     }
 
     VULKAN_HPP_INLINE void Device::uninitializePerformanceApiINTEL() const VULKAN_HPP_NOEXCEPT
@@ -19361,7 +19361,7 @@ namespace VULKAN_HPP_NAMESPACE
 
       VULKAN_HPP_NAMESPACE::Result result = static_cast<VULKAN_HPP_NAMESPACE::Result>( getDispatcher()->vkCmdSetPerformanceMarkerINTEL(
         static_cast<VkCommandBuffer>( m_commandBuffer ), reinterpret_cast<const VkPerformanceMarkerInfoINTEL *>( &markerInfo ) ) );
-      resultCheck( result, VULKAN_HPP_NAMESPACE_STRING "::CommandBuffer::setPerformanceMarkerINTEL" );
+      resultCheck( result, VULKAN_HPP_NAMESPACE_STRING "::CommandBuffer::setPerformanceMarkerINTEU" );
     }
 
     VULKAN_HPP_INLINE void CommandBuffer::setPerformanceStreamMarkerINTEL( const VULKAN_HPP_NAMESPACE::PerformanceStreamMarkerInfoINTEL & markerInfo ) const
@@ -19371,7 +19371,7 @@ namespace VULKAN_HPP_NAMESPACE
 
       VULKAN_HPP_NAMESPACE::Result result = static_cast<VULKAN_HPP_NAMESPACE::Result>( getDispatcher()->vkCmdSetPerformanceStreamMarkerINTEL(
         static_cast<VkCommandBuffer>( m_commandBuffer ), reinterpret_cast<const VkPerformanceStreamMarkerInfoINTEL *>( &markerInfo ) ) );
-      resultCheck( result, VULKAN_HPP_NAMESPACE_STRING "::CommandBuffer::setPerformanceStreamMarkerINTEL" );
+      resultCheck( result, VULKAN_HPP_NAMESPACE_STRING "::CommandBuffer::setPerformanceStreamMarkerINTEU" );
     }
 
     VULKAN_HPP_INLINE void CommandBuffer::setPerformanceOverrideINTEL( const VULKAN_HPP_NAMESPACE::PerformanceOverrideInfoINTEL & overrideInfo ) const
@@ -19381,7 +19381,7 @@ namespace VULKAN_HPP_NAMESPACE
 
       VULKAN_HPP_NAMESPACE::Result result = static_cast<VULKAN_HPP_NAMESPACE::Result>( getDispatcher()->vkCmdSetPerformanceOverrideINTEL(
         static_cast<VkCommandBuffer>( m_commandBuffer ), reinterpret_cast<const VkPerformanceOverrideInfoINTEL *>( &overrideInfo ) ) );
-      resultCheck( result, VULKAN_HPP_NAMESPACE_STRING "::CommandBuffer::setPerformanceOverrideINTEL" );
+      resultCheck( result, VULKAN_HPP_NAMESPACE_STRING "::CommandBuffer::setPerformanceOverrideINTEU" );
     }
 
     VULKAN_HPP_NODISCARD VULKAN_HPP_INLINE
@@ -19399,7 +19399,7 @@ namespace VULKAN_HPP_NAMESPACE
 #  if defined( VULKAN_HPP_RAII_NO_EXCEPTIONS )
         return VULKAN_HPP_UNEXPECTED( result );
 #  else
-        VULKAN_HPP_NAMESPACE::detail::throwResultException( result, "Device::acquirePerformanceConfigurationINTEL" );
+        VULKAN_HPP_NAMESPACE::detail::throwResultException( result, "Device::acquirePerformanceConfigurationINTEU" );
 #  endif
       }
 
@@ -19414,7 +19414,7 @@ namespace VULKAN_HPP_NAMESPACE
 
       VULKAN_HPP_NAMESPACE::Result result = static_cast<VULKAN_HPP_NAMESPACE::Result>( getDispatcher()->vkQueueSetPerformanceConfigurationINTEL(
         static_cast<VkQueue>( m_queue ), static_cast<VkPerformanceConfigurationINTEL>( configuration ) ) );
-      resultCheck( result, VULKAN_HPP_NAMESPACE_STRING "::Queue::setPerformanceConfigurationINTEL" );
+      resultCheck( result, VULKAN_HPP_NAMESPACE_STRING "::Queue::setPerformanceConfigurationINTEU" );
     }
 
     VULKAN_HPP_NODISCARD VULKAN_HPP_INLINE VULKAN_HPP_NAMESPACE::PerformanceValueINTEL
@@ -19425,7 +19425,7 @@ namespace VULKAN_HPP_NAMESPACE
       VULKAN_HPP_NAMESPACE::PerformanceValueINTEL value;
       VULKAN_HPP_NAMESPACE::Result                result = static_cast<VULKAN_HPP_NAMESPACE::Result>( getDispatcher()->vkGetPerformanceParameterINTEL(
         static_cast<VkDevice>( m_device ), static_cast<VkPerformanceParameterTypeINTEL>( parameter ), reinterpret_cast<VkPerformanceValueINTEL *>( &value ) ) );
-      resultCheck( result, VULKAN_HPP_NAMESPACE_STRING "::Device::getPerformanceParameterINTEL" );
+      resultCheck( result, VULKAN_HPP_NAMESPACE_STRING "::Device::getPerformanceParameterINTEU" );
 
       return value;
     }

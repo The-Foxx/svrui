@@ -49,10 +49,10 @@ typedef void* HANDLE;
 
 typedef struct{
 #ifdef _WIN32
-	HANDLE Mutex;
+    HANDLE Mutex;
 
 #else
-	pthread_mutex_t Mutex;
+    pthread_mutex_t Mutex;
 
 #endif
 
