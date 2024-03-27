@@ -12,7 +12,9 @@
 //
 ////////////////////////////////////////////////////////////////////////////
 
+#ifdef _WIN32
 #define PAL_IMPL
+
 #include "vrui_pal.h"
 #include "vrui.h"
 #include "windows.h"
@@ -60,3 +62,5 @@ void vrui_unlock_mutex(vrui_mutex Mutex) {
     }
 
 }
+
+#endif

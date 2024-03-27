@@ -32,14 +32,14 @@ static int WindowRegAlloc = 0;
 void vrui_window_grow(int Size){
     if (Size > WindowRegAlloc) {
         int NewTargetSize = WindowRegAlloc * 2;
-        WindowRegPtr = vrui_realloc(WindowRegPtr, NewTargetSize * sizeof(vrui_window));
+        WindowRegPtr = (vrui_window*)vrui_realloc(WindowRegPtr, NewTargetSize * sizeof(vrui_window));
 
     }
 
 }
 
 void vrui_window_init() {
-    WindowRegPtr = vrui_alloc(sizeof(vrui_window) * 32);
+    WindowRegPtr = (vrui_window*)vrui_alloc(sizeof(vrui_window) * 32);
     WindowRegAlloc = 32;
 
     return;
@@ -79,28 +79,28 @@ vrui_window* vrui_new_window(vrui_job InJob, const char* Name) {
 
 void vrui_new_window_init(vrui_window* Window) {
     {
-        Window->VertBuf = vrui_alloc(1024 * sizeof(vrui_vert));
+        Window->VertBuf = (vrui_vert*)vrui_alloc(1024 * sizeof(vrui_vert));
         Window->VertBufSize = 0;
         Window->VertBufAlloc = 1024;
 
     }
 
     {
-        Window->OrdBuf = vrui_alloc(4096 * sizeof(int));
+        Window->OrdBuf = (int*)vrui_alloc(4096 * sizeof(int));
         Window->OrdBufSize = 0;
         Window->OrdBufAlloc = 4096;
 
     }
 
     {
-        Window->AlphaBuf = vrui_alloc(256 * sizeof(vrui_vert));
+        Window->AlphaBuf = (vrui_vert*)vrui_alloc(256 * sizeof(vrui_vert));
         Window->AlphaBufSize = 0;
         Window->AlphaBufAlloc = 256;
 
     }
 
     {
-        Window->AOrdBuf = vrui_alloc(1024 * sizeof(int));
+        Window->AOrdBuf = (int*)vrui_alloc(1024 * sizeof(int));
         Window->AOrdBufSize = 0;
         Window->AOrdBufAlloc = 1024;
 
